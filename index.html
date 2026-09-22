@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>СВОЙ КРУГ — Спортивный бизнес-клуб в Санкт-Петербурге</title>
-  <meta name="description" content="Беговой клуб и турниры по падел-теннису для предпринимателей и топ-менеджеров в Санкт-Петербурге. Уровень подготовки любой.">
+  <meta name="description" content="Беговой клуб и турниры по падел-теннису для предпринимателей и топ-менеджеров в Санкт-Петербурге.">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -32,19 +32,50 @@
   <style>
     body { font-family: 'Inter', sans-serif; }
 
+    /* Бегущая строка */
     @keyframes marquee {
       0% { transform: translateX(0%); }
       100% { transform: translateX(-50%); }
     }
-
     .animate-marquee {
       display: flex;
       width: max-content;
       animation: marquee 28s linear infinite;
     }
-
     .animate-marquee:hover {
       animation-play-state: paused;
+    }
+
+    /* Анимация смены слова (Word Rotator) */
+    .word-rotator-wrapper {
+      display: inline-block;
+      vertical-align: bottom;
+      position: relative;
+      overflow: hidden;
+      height: 1.25em;
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .word-item {
+      position: absolute;
+      left: 0;
+      top: 0;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+      pointer-events: none;
+    }
+
+    .word-item.active {
+      opacity: 1;
+      transform: translateY(0%);
+      pointer-events: auto;
+    }
+
+    .word-item.exit {
+      opacity: 0;
+      transform: translateY(-100%);
     }
   </style>
 </head>
@@ -74,12 +105,23 @@
     <div class="inline-flex items-center gap-2 border border-brand-border bg-brand-card px-4 py-1.5 rounded-full text-xs font-semibold text-brand-lime uppercase tracking-wider mb-8">
       <span>●</span> Санкт-Петербург · Бег & Падел-теннис
     </div>
-    <h1 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[1.05] uppercase max-w-4xl mb-6">
-      Первый спортивный <br class="hidden sm:block">
-      <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-lime via-white to-neutral-400">бизнес-клуб</span> в СПб
+    
+    <!-- Главный заголовок с анимированным ротатором отраслей -->
+    <h1 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.2] uppercase max-w-5xl mb-8">
+      Мы объединяем фаундеров и руководителей из 
+      <span class="word-rotator-wrapper text-brand-lime border-b-2 border-brand-lime/40 pb-1" id="rotatorWrapper">
+        <span class="word-item active">IT & разработки</span>
+        <span class="word-item">производства</span>
+        <span class="word-item">ритейла & e-com</span>
+        <span class="word-item">строительства</span>
+        <span class="word-item">консалтинга</span>
+        <span class="word-item">сферы услуг</span>
+        <span class="word-item">инвестиций</span>
+      </span>
     </h1>
+
     <p class="text-lg md:text-xl text-neutral-300 max-w-2xl font-normal leading-relaxed mb-10">
-      Регулярные беговые тренировки с профи и закрытые матчи по падел-теннису для фаундеров, руководителей и специалистов. Без жестких нормативов — учим с нуля.
+      Регулярные беговые тренировки с профессионалами и закрытые турниры по падел-теннису в Петербурге. Без жестких нормативов — учим и ставим технику с любого уровня.
     </p>
 
     <!-- Кнопки действия -->
@@ -396,8 +438,45 @@
     </div>
   </footer>
 
-  <!-- Скрипт отправки формы -->
+  <!-- Скрипты: Форма + Ротатор слов -->
   <script>
+    // 1. Логика Word Rotator (скролл-анимация слов)
+    const wrapper = document.getElementById('rotatorWrapper');
+    const words = Array.from(wrapper.getElementsByClassName('word-item'));
+    let currentIndex = 0;
+
+    function updateWrapperWidth(element) {
+      wrapper.style.width = element.offsetWidth + 'px';
+    }
+
+    // Инициализируем ширину первого слова
+    window.addEventListener('load', () => {
+      updateWrapperWidth(words[0]);
+    });
+
+    setInterval(() => {
+      const currentWord = words[currentIndex];
+      currentIndex = (currentIndex + 1) % words.length;
+      const nextWord = words[currentIndex];
+
+      // Старое слово уезжает вверх
+      currentWord.classList.remove('active');
+      currentWord.classList.add('exit');
+
+      // Новое слово въезжает снизу
+      nextWord.classList.remove('exit');
+      nextWord.classList.add('active');
+
+      // Плавно подгоняем ширину под новое слово
+      updateWrapperWidth(nextWord);
+
+      // Сбрасываем класс exit после завершения перехода
+      setTimeout(() => {
+        currentWord.classList.remove('exit');
+      }, 500);
+    }, 2400);
+
+    // 2. Обработка формы
     const form = document.getElementById('leadForm');
     const submitBtn = document.getElementById('submitBtn');
     const successMsg = document.getElementById('formSuccess');
