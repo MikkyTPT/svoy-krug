@@ -15,9 +15,9 @@
           colors: {
             brand: {
               lime: '#D2F802',
-              dark: '#0A0A0B',
-              card: '#141416',
-              border: '#242429',
+              dark: '#08080A',
+              card: '#121214',
+              border: '#202024',
               muted: '#8E8E93'
             }
           }
@@ -79,67 +79,122 @@
     }
   </style>
 </head>
-<body class="bg-brand-dark text-white selection:bg-brand-lime selection:text-black">
+<body class="bg-brand-dark text-white selection:bg-brand-lime selection:text-black antialiased">
 
-  <!-- Навигация -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-brand-dark/80 backdrop-blur-md border-b border-brand-border">
-    <div class="max-w-6xl mx-auto px-5 h-20 flex items-center justify-between">
-      <a href="#" class="text-2xl font-black tracking-tighter uppercase flex items-center gap-2">
-        <span class="w-3 h-3 rounded-full bg-brand-lime inline-block"></span>
+  <!-- Скрытый хедер (Всплывает только при наведении мыши в верхнюю зону) -->
+  <header class="group fixed top-0 left-0 right-0 z-50 h-24 flex items-center transition-all duration-300 hover:bg-brand-dark/95 hover:backdrop-blur-md hover:border-b hover:border-brand-border">
+    <div class="max-w-7xl mx-auto w-full px-6 flex items-center justify-between">
+      
+      <!-- Логотип всегда виден слева вверху -->
+      <a href="#" class="text-2xl font-black tracking-tighter uppercase flex items-center gap-2.5 z-10">
+        <span class="w-3 h-3 rounded-full bg-brand-lime inline-block shadow-[0_0_12px_#D2F802]"></span>
         СВОЙ КРУГ
       </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-brand-muted">
+
+      <!-- Скрытые пункты меню: проявляются при наведении курсора на верхнюю часть экрана -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase text-neutral-400 opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
         <a href="#about" class="hover:text-white transition-colors">О клубе</a>
         <a href="#running" class="hover:text-white transition-colors">Бег</a>
         <a href="#padel" class="hover:text-white transition-colors">Падел-теннис</a>
         <a href="#formats" class="hover:text-white transition-colors">Форматы</a>
       </nav>
-      <a href="#join" class="bg-brand-lime text-black font-bold px-5 py-2.5 rounded-full text-sm hover:bg-white transition-all transform hover:scale-105">
-        Гостевой визит
-      </a>
+
+      <!-- Скрытая кнопка гостевого визита справа: проявляется при наведении -->
+      <div class="hidden md:block opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+        <a href="#join" class="bg-brand-lime text-black font-extrabold px-6 py-2.5 rounded-lg text-xs uppercase tracking-wider hover:bg-white transition-all">
+          Гостевой визит
+        </a>
+      </div>
+
+      <!-- Мобильная кнопка меню (для экранов смартфонов) -->
+      <button id="mobileMenuBtn" class="md:hidden text-xs uppercase font-bold tracking-wider text-brand-lime border border-brand-border px-3 py-1.5 rounded-lg bg-brand-card">
+        Меню
+      </button>
+
+    </div>
+
+    <!-- Мобильная шторка навигации -->
+    <div id="mobileMenu" class="hidden md:hidden absolute top-24 left-0 right-0 bg-brand-dark border-b border-brand-border p-6 flex flex-col gap-4 text-sm font-semibold uppercase">
+      <a href="#about" class="mobile-link text-neutral-300 hover:text-white">О клубе</a>
+      <a href="#running" class="mobile-link text-neutral-300 hover:text-white">Бег</a>
+      <a href="#padel" class="mobile-link text-neutral-300 hover:text-white">Падел-теннис</a>
+      <a href="#formats" class="mobile-link text-neutral-300 hover:text-white">Форматы</a>
+      <a href="#join" class="mobile-link bg-brand-lime text-black font-extrabold text-center py-3 rounded-lg text-xs tracking-wider">Гостевой визит</a>
     </div>
   </header>
 
-  <!-- Hero Screen -->
-  <section class="pt-36 pb-16 px-5 max-w-6xl mx-auto">
-    <div class="inline-flex items-center gap-2 border border-brand-border bg-brand-card px-4 py-1.5 rounded-full text-xs font-semibold text-brand-lime uppercase tracking-wider mb-8">
-      <span>●</span> Первое спортивное бизнес сообщество
-    </div>
+  <!-- Hero Screen по композиции вашего референса -->
+  <section class="min-h-screen pt-28 pb-12 px-6 max-w-7xl mx-auto flex flex-col justify-center">
     
-    <!-- Главный заголовок с ротатором отраслей -->
-    <h1 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.2] uppercase max-w-5xl mb-8">
-      МЫ ОБЪЕДИНЯЕМ ФАУНДЕРОВ И РУКОВОДИТЕЛЕЙ ИЗ 
-      <span class="word-rotator-wrapper text-brand-lime border-b-2 border-brand-lime/40 pb-1" id="rotatorWrapper">
-        <span class="word-item active">IT & РАЗРАБОТКИ</span>
-        <span class="word-item">ПРОИЗВОДСТВА</span>
-        <span class="word-item">РИТЕЙЛА & E-COM</span>
-        <span class="word-item">СТРОИТЕЛЬСТВА</span>
-        <span class="word-item">КОНСАЛТИНГА</span>
-        <span class="word-item">СФЕРЫ УСЛУГ</span>
-        <span class="word-item">ИНВЕСТИЦИЙ</span>
-      </span>
-    </h1>
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      
+      <!-- Левая колонка: Типографика и кнопка действия -->
+      <div class="lg:col-span-7 flex flex-col justify-center">
+        
+        <div class="inline-flex items-center gap-2 border border-brand-border bg-brand-card px-4 py-1.5 rounded-full text-xs font-semibold text-brand-lime uppercase tracking-wider mb-6 w-max">
+          <span>●</span> Первое спортивное бизнес сообщество
+        </div>
 
-    <p class="text-lg md:text-xl text-neutral-300 max-w-3xl font-normal leading-relaxed mb-10">
-      Регулярные беговые тренировки с профессиональным тренерским составом. Закрытые тренировки и турниры по падел-теннису в Санкт-Петербурге. Наша цель не собрать спортсменов-профессионалов, а объединить предпринимателей и управленцев любого спортивного бэкграунда.
-    </p>
+        <h1 class="text-4xl sm:text-6xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.08] uppercase mb-8">
+          МЫ ОБЪЕДИНЯЕМ ФАУНДЕРОВ И РУКОВОДИТЕЛЕЙ ИЗ <br>
+          <span class="word-rotator-wrapper text-brand-lime border-b-2 border-brand-lime/40 pb-1 mt-1" id="rotatorWrapper">
+            <span class="word-item active">IT & РАЗРАБОТКИ</span>
+            <span class="word-item">ПРОИЗВОДСТВА</span>
+            <span class="word-item">РИТЕЙЛА & E-COM</span>
+            <span class="word-item">СТРОИТЕЛЬСТВА</span>
+            <span class="word-item">КОНСАЛТИНГА</span>
+            <span class="word-item">СФЕРЫ УСЛУГ</span>
+            <span class="word-item">ИНВЕСТИЦИЙ</span>
+          </span>
+        </h1>
 
-    <!-- Кнопки действия -->
-    <div class="flex flex-col sm:flex-row gap-4 mb-10">
-      <a href="#join" class="bg-brand-lime text-black font-extrabold px-8 py-4 rounded-xl text-center text-base hover:bg-white transition-all shadow-lg shadow-brand-lime/10">
-        Подать заявку в клуб
-      </a>
-      <a href="#formats" class="border border-brand-border bg-brand-card text-white font-medium px-8 py-4 rounded-xl text-center text-base hover:border-neutral-500 transition-colors">
-        Расписание и форматы
-      </a>
+        <p class="text-base sm:text-lg text-neutral-400 max-w-xl font-normal leading-relaxed mb-10">
+          Регулярные беговые тренировки с профессиональным тренерским составом. Закрытые тренировки и турниры по падел-теннису в Санкт-Петербурге. Наша цель не собрать спортсменов-профессионалов, а объединить предпринимателей и управленцев любого спортивного бэкграунда.
+        </p>
+
+        <!-- Прямоугольная акцентная кнопка в стиле референса -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#join" class="bg-brand-lime text-black font-black text-sm uppercase tracking-widest px-10 py-5 rounded-none sm:rounded-lg text-center hover:bg-white transition-all transform hover:scale-[1.02] shadow-[0_0_30px_rgba(210,248,2,0.25)]">
+            Подать заявку в клуб
+          </a>
+          <a href="#formats" class="border border-brand-border bg-brand-card/80 text-white font-bold text-sm uppercase tracking-wider px-8 py-5 rounded-none sm:rounded-lg text-center hover:border-neutral-400 transition-colors">
+            Форматы участия
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Правая колонка: Атмосферное фото + Круглый неоновый бейдж (как на референсе) -->
+      <div class="lg:col-span-5 relative mt-6 lg:mt-0">
+        
+        <!-- Контейнер вертикальной фотографии -->
+        <div class="relative w-full h-[480px] sm:h-[580px] rounded-2xl overflow-hidden border border-brand-border bg-brand-card shadow-2xl">
+          <img 
+            src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1200&q=80" 
+            alt="Атлет на беговом треке" 
+            class="w-full h-full object-cover object-center filter grayscale contrast-125 brightness-90"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-black/30 pointer-events-none"></div>
+        </div>
+
+        <!-- Круглый неоновый бейдж (отсылка к правому кругу на референсе) -->
+        <div class="absolute -bottom-6 -right-4 sm:-bottom-8 sm:-right-8 w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-brand-lime text-black p-4 sm:p-5 flex flex-col justify-center items-center text-center shadow-[0_10px_40px_rgba(210,248,2,0.35)] transform rotate-6 hover:rotate-0 transition-transform">
+          <span class="text-[11px] sm:text-xs font-black uppercase tracking-tight leading-tight">
+            СПб · 0+ опыт <br>Спорт & Качественный нетворкинг
+          </span>
+          <span class="text-lg sm:text-xl font-black mt-1">★ ★</span>
+        </div>
+
+      </div>
+
     </div>
 
-    <!-- Бегущая строка (★★ ПРОЕКТ M&M DIGITAL AGENCY ★★) -->
-    <div class="my-10 py-3.5 border-y border-brand-border bg-brand-card/60 overflow-hidden relative rounded-lg">
-      <div class="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-brand-dark to-transparent z-10 pointer-events-none"></div>
-      <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-brand-dark to-transparent z-10 pointer-events-none"></div>
+    <!-- Бегущая строка -->
+    <div class="mt-16 py-4 border-y border-brand-border bg-brand-card/50 overflow-hidden relative rounded-xl">
+      <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-brand-dark to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-brand-dark to-transparent z-10 pointer-events-none"></div>
 
-      <div class="animate-marquee items-center gap-8 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-neutral-200">
+      <div class="animate-marquee items-center gap-8 text-xs sm:text-sm font-black uppercase tracking-wider text-neutral-300">
         <span class="inline-flex items-center gap-3">
           <span class="text-brand-lime">★★ ПРОЕКТ M&M DIGITAL AGENCY ★★</span>
           <span class="text-brand-muted">●</span>
@@ -167,33 +222,34 @@
       </div>
     </div>
 
-    <!-- Факты / Триггеры -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 border-t border-brand-border pt-10">
+    <!-- Цифры и факты -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-brand-border pt-10 mt-6">
       <div>
-        <p class="text-3xl font-black text-brand-lime">0+</p>
-        <p class="text-sm text-neutral-400 mt-1">Любой опыт: от первой пробежки до марафона</p>
+        <p class="text-3xl sm:text-4xl font-black text-brand-lime">0+</p>
+        <p class="text-xs sm:text-sm text-neutral-400 mt-1 uppercase tracking-wider">Любой уровень подготовки</p>
       </div>
       <div>
-        <p class="text-2xl sm:text-3xl font-black text-white">Манеж / стадионы / парки</p>
-        <p class="text-sm text-neutral-400 mt-1">Зимой в тепле, летом на свежем воздухе СПб</p>
+        <p class="text-xl sm:text-2xl font-black text-white uppercase">Манеж / стадионы / парки</p>
+        <p class="text-xs sm:text-sm text-neutral-400 mt-1">Зимой в тепле, летом на воздухе</p>
       </div>
       <div>
-        <p class="text-2xl sm:text-3xl font-black text-brand-lime">Padel</p>
-        <p class="text-sm text-neutral-400 mt-1">От новичков до рейтинговых игр</p>
+        <p class="text-xl sm:text-2xl font-black text-brand-lime uppercase">Padel</p>
+        <p class="text-xs sm:text-sm text-neutral-400 mt-1">От новичков до рейтинговых игр</p>
       </div>
       <div>
-        <p class="text-2xl sm:text-3xl font-black text-white">Network</p>
-        <p class="text-sm text-neutral-400 mt-1">Клубные завтраки и общение без регалий</p>
+        <p class="text-xl sm:text-2xl font-black text-white uppercase">Network</p>
+        <p class="text-xs sm:text-sm text-neutral-400 mt-1">Завтраки и общение без регалий</p>
       </div>
     </div>
+
   </section>
 
-  <!-- Смысловой блок: Почему такой формат -->
-  <section id="about" class="py-20 bg-brand-card border-y border-brand-border px-5">
-    <div class="max-w-6xl mx-auto">
-      <div class="max-w-2xl mb-12">
+  <!-- Смысловой блок -->
+  <section id="about" class="py-24 bg-brand-card border-y border-brand-border px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-2xl mb-16">
         <h2 class="text-xs font-bold text-brand-lime uppercase tracking-widest mb-3">Концепция сообщества</h2>
-        <p class="text-3xl md:text-4xl font-black uppercase tracking-tight">Спорт вместо душных конференций</p>
+        <p class="text-3xl md:text-5xl font-black uppercase tracking-tight">Спорт вместо душных конференций</p>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-brand-dark p-8 rounded-2xl border border-brand-border">
@@ -222,8 +278,8 @@
   </section>
 
   <!-- Блок: Беговой клуб -->
-  <section id="running" class="py-20 px-5 max-w-6xl mx-auto">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+  <section id="running" class="py-24 px-6 max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
       <div>
         <span class="text-xs font-bold text-brand-lime uppercase tracking-widest">Направление #1</span>
         <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight mt-2">Беговой клуб</h2>
@@ -233,8 +289,8 @@
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="bg-brand-card border border-brand-border p-8 rounded-2xl flex flex-col justify-between">
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-brand-card border border-brand-border p-8 sm:p-10 rounded-2xl flex flex-col justify-between">
         <div>
           <span class="inline-block bg-blue-500/10 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full mb-4">Зимний сезон</span>
           <h3 class="text-2xl font-bold mb-3">Легкоатлетический манеж</h3>
@@ -248,7 +304,7 @@
         </ul>
       </div>
 
-      <div class="bg-brand-card border border-brand-border p-8 rounded-2xl flex flex-col justify-between">
+      <div class="bg-brand-card border border-brand-border p-8 sm:p-10 rounded-2xl flex flex-col justify-between">
         <div>
           <span class="inline-block bg-emerald-500/10 text-emerald-400 text-xs font-semibold px-3 py-1 rounded-full mb-4">Летний сезон</span>
           <h3 class="text-2xl font-bold mb-3">Парки и набережные Петербурга</h3>
@@ -265,9 +321,9 @@
   </section>
 
   <!-- Блок: Падел-теннис -->
-  <section id="padel" class="py-20 bg-brand-card border-y border-brand-border px-5">
-    <div class="max-w-6xl mx-auto">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+  <section id="padel" class="py-24 bg-brand-card border-y border-brand-border px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
         <div>
           <span class="text-xs font-bold text-brand-lime uppercase tracking-widest">Направление #2</span>
           <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight mt-2">Падел-теннис (Игры)</h2>
@@ -278,19 +334,19 @@
       </div>
 
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-brand-dark p-6 rounded-xl border border-brand-border">
+        <div class="bg-brand-dark p-8 rounded-2xl border border-brand-border">
           <h3 class="text-lg font-bold mb-2">Низкий порог входа</h3>
           <p class="text-neutral-400 text-sm">
             Не нужно годами ставить подачу. 15 минут инструктажа перед матчем — и вы уже играете динамичный розыгрыш через стенки корта.
           </p>
         </div>
-        <div class="bg-brand-dark p-6 rounded-xl border border-brand-border">
+        <div class="bg-brand-dark p-8 rounded-2xl border border-brand-border">
           <h3 class="text-lg font-bold mb-2">Формат: Только игры</h3>
           <p class="text-neutral-400 text-sm">
             Бронируем современные корты, формируем сбалансированные пары игроков по уровню и проводим регулярные клубные матчи и мини-турниры.
           </p>
         </div>
-        <div class="bg-brand-dark p-6 rounded-xl border border-brand-border">
+        <div class="bg-brand-dark p-8 rounded-2xl border border-brand-border">
           <h3 class="text-lg font-bold mb-2">Экипировка на месте</h3>
           <p class="text-neutral-400 text-sm">
             Ракетки и мячи предоставляются клубом. Вам нужны только удобные кроссовки и спортивная форма.
@@ -300,8 +356,8 @@
     </div>
   </section>
 
-  <!-- Блок: Форматы участия с динамической интерактивной рамкой -->
-  <section id="formats" class="py-20 px-5 max-w-6xl mx-auto">
+  <!-- Блок: Форматы участия с интерактивной рамкой -->
+  <section id="formats" class="py-24 px-6 max-w-7xl mx-auto">
     <div class="text-center max-w-2xl mx-auto mb-16">
       <h2 class="text-xs font-bold text-brand-lime uppercase tracking-widest mb-3">Членство в клубе</h2>
       <p class="text-3xl md:text-5xl font-black uppercase tracking-tight">Выберите свой формат</p>
@@ -374,13 +430,13 @@
   </section>
 
   <!-- Форма захвата заявки -->
-  <section id="join" class="py-20 bg-brand-card border-t border-brand-border px-5">
+  <section id="join" class="py-24 bg-brand-card border-t border-brand-border px-6">
     <div class="max-w-2xl mx-auto">
       <div class="text-center mb-10">
         <span class="text-xs font-bold text-brand-lime uppercase tracking-widest">Анкета кандидата</span>
         <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight mt-2">Подать заявку в «Свой круг»</h2>
         <p class="text-neutral-400 text-sm mt-3">
-          Мы свяжемся с вами в Telegram или WhatsApp, расскажем подробности по локациям и согласуем дату визита.
+          Мы свяжемся с вами в Telegram или по телефону, расскажем подробности по расписанию и согласуем дату визита.
         </p>
       </div>
 
@@ -433,8 +489,8 @@
   </section>
 
   <!-- Футер с соцсетями (Telegram, YouTube, VK) -->
-  <footer class="py-12 border-t border-brand-border px-5 text-xs text-neutral-500 bg-brand-dark">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+  <footer class="py-12 border-t border-brand-border px-6 text-xs text-neutral-500 bg-brand-dark">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
       
       <!-- Логотип и копирайт -->
       <div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
@@ -479,9 +535,19 @@
     </div>
   </footer>
 
-  <!-- Скрипты: Форма + Ротатор слов + Интерактивные тарифы + Маска телефона -->
+  <!-- Скрипты -->
   <script>
-    // 1. Логика Word Rotator
+    // 1. Мобильное меню (по клику)
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    // 2. Логика Word Rotator
     const wrapper = document.getElementById('rotatorWrapper');
     const words = Array.from(wrapper.getElementsByClassName('word-item'));
     let currentIndex = 0;
@@ -512,7 +578,7 @@
       }, 500);
     }, 2400);
 
-    // 2. Интерактивная рамка тарифов с возвратом на Full Resident
+    // 3. Интерактивная рамка тарифов с возвратом на Full Resident
     const pricingGrid = document.getElementById('pricingGrid');
     const cards = pricingGrid.querySelectorAll('.pricing-card');
     const defaultCard = pricingGrid.querySelector('[data-plan="resident"]');
@@ -549,12 +615,9 @@
       });
     }
 
-    // Слушатели событий hover и клика на тариф
     cards.forEach(card => {
       card.addEventListener('mouseenter', () => highlightCard(card));
-      
-      // Авто-переключение селекта в форме при клике на карточку
-      card.addEventListener('click', (e) => {
+      card.addEventListener('click', () => {
         const plan = card.getAttribute('data-plan');
         if (plan === 'guest') interestSelect.value = 'guest';
         if (plan === 'resident') interestSelect.value = 'all';
@@ -566,7 +629,7 @@
       highlightCard(defaultCard);
     });
 
-    // 3. Маска ввода номера телефона (+7 (___) ___-__-__)
+    // 4. Маска телефона
     const phoneInput = document.getElementById('phoneInput');
     phoneInput.addEventListener('input', (e) => {
       let val = e.target.value.replace(/\D/g, '');
@@ -581,7 +644,7 @@
       e.target.value = val.length === 0 ? '' : res;
     });
 
-    // 4. Обработка формы
+    // 5. Обработка формы
     const form = document.getElementById('leadForm');
     const submitBtn = document.getElementById('submitBtn');
     const successMsg = document.getElementById('formSuccess');
