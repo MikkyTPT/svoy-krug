@@ -81,32 +81,25 @@
 </head>
 <body class="bg-brand-dark text-white selection:bg-brand-lime selection:text-black antialiased">
 
-  <!-- Скрытый хедер (Всплывает только при наведении мыши в верхнюю зону) -->
-  <header class="group fixed top-0 left-0 right-0 z-50 h-24 flex items-center transition-all duration-300 hover:bg-brand-dark/95 hover:backdrop-blur-md hover:border-b hover:border-brand-border">
+  <!-- Фиксированный хедер с плотной подложкой: не смешивается при скролле -->
+  <header class="fixed top-0 left-0 right-0 z-50 h-20 bg-brand-dark/95 backdrop-blur-md border-b border-brand-border/80 flex items-center">
     <div class="max-w-7xl mx-auto w-full px-6 flex items-center justify-between">
       
-      <!-- Логотип всегда виден слева вверху -->
-      <a href="#" class="text-2xl font-black tracking-tighter uppercase flex items-center gap-2.5 z-10">
+      <!-- Логотип всегда на месте -->
+      <a href="#" class="text-2xl font-black tracking-tighter uppercase flex items-center gap-2.5">
         <span class="w-3 h-3 rounded-full bg-brand-lime inline-block shadow-[0_0_12px_#D2F802]"></span>
         СВОЙ КРУГ
       </a>
 
-      <!-- Скрытые пункты меню: проявляются при наведении курсора на верхнюю часть экрана -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase text-neutral-400 opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
-        <a href="#about" class="hover:text-white transition-colors">О клубе</a>
-        <a href="#running" class="hover:text-white transition-colors">Бег</a>
-        <a href="#padel" class="hover:text-white transition-colors">Падел-теннис</a>
-        <a href="#formats" class="hover:text-white transition-colors">Форматы</a>
+      <!-- Ссылки видны на 25-30%, при hover становятся ярко-белыми -->
+      <nav class="hidden md:flex items-center gap-8 text-xs sm:text-sm font-bold tracking-wider uppercase">
+        <a href="#about" class="text-white/25 hover:text-white transition-all duration-300">О клубе</a>
+        <a href="#running" class="text-white/25 hover:text-white transition-all duration-300">Бег</a>
+        <a href="#padel" class="text-white/25 hover:text-white transition-all duration-300">Падел-теннис</a>
+        <a href="#formats" class="text-white/25 hover:text-white transition-all duration-300">Форматы</a>
       </nav>
 
-      <!-- Скрытая кнопка гостевого визита справа: проявляется при наведении -->
-      <div class="hidden md:block opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
-        <a href="#join" class="bg-brand-lime text-black font-extrabold px-6 py-2.5 rounded-lg text-xs uppercase tracking-wider hover:bg-white transition-all">
-          Гостевой визит
-        </a>
-      </div>
-
-      <!-- Мобильная кнопка меню (для экранов смартфонов) -->
+      <!-- Мобильная кнопка меню -->
       <button id="mobileMenuBtn" class="md:hidden text-xs uppercase font-bold tracking-wider text-brand-lime border border-brand-border px-3 py-1.5 rounded-lg bg-brand-card">
         Меню
       </button>
@@ -114,7 +107,7 @@
     </div>
 
     <!-- Мобильная шторка навигации -->
-    <div id="mobileMenu" class="hidden md:hidden absolute top-24 left-0 right-0 bg-brand-dark border-b border-brand-border p-6 flex flex-col gap-4 text-sm font-semibold uppercase">
+    <div id="mobileMenu" class="hidden md:hidden absolute top-20 left-0 right-0 bg-brand-dark border-b border-brand-border p-6 flex flex-col gap-4 text-sm font-semibold uppercase">
       <a href="#about" class="mobile-link text-neutral-300 hover:text-white">О клубе</a>
       <a href="#running" class="mobile-link text-neutral-300 hover:text-white">Бег</a>
       <a href="#padel" class="mobile-link text-neutral-300 hover:text-white">Падел-теннис</a>
@@ -123,19 +116,19 @@
     </div>
   </header>
 
-  <!-- Hero Screen по композиции вашего референса -->
+  <!-- Hero Screen с широким фото и интерактивным зеленым кругом -->
   <section class="min-h-screen pt-28 pb-12 px-6 max-w-7xl mx-auto flex flex-col justify-center">
     
-    <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+    <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
       
-      <!-- Левая колонка: Типографика и кнопка действия -->
-      <div class="lg:col-span-7 flex flex-col justify-center">
+      <!-- Левая колонка: Типографика и кнопка -->
+      <div class="lg:col-span-6 flex flex-col justify-center">
         
         <div class="inline-flex items-center gap-2 border border-brand-border bg-brand-card px-4 py-1.5 rounded-full text-xs font-semibold text-brand-lime uppercase tracking-wider mb-6 w-max">
           <span>●</span> Первое спортивное бизнес сообщество
         </div>
 
-        <h1 class="text-4xl sm:text-6xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.08] uppercase mb-8">
+        <h1 class="text-3xl sm:text-5xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] uppercase mb-8">
           МЫ ОБЪЕДИНЯЕМ ФАУНДЕРОВ И РУКОВОДИТЕЛЕЙ ИЗ <br>
           <span class="word-rotator-wrapper text-brand-lime border-b-2 border-brand-lime/40 pb-1 mt-1" id="rotatorWrapper">
             <span class="word-item active">IT & РАЗРАБОТКИ</span>
@@ -148,11 +141,11 @@
           </span>
         </h1>
 
-        <p class="text-base sm:text-lg text-neutral-400 max-w-xl font-normal leading-relaxed mb-10">
+        <p class="text-base text-neutral-400 max-w-lg font-normal leading-relaxed mb-10">
           Регулярные беговые тренировки с профессиональным тренерским составом. Закрытые тренировки и турниры по падел-теннису в Санкт-Петербурге. Наша цель не собрать спортсменов-профессионалов, а объединить предпринимателей и управленцев любого спортивного бэкграунда.
         </p>
 
-        <!-- Прямоугольная акцентная кнопка в стиле референса -->
+        <!-- Прямоугольная акцентная кнопка -->
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="#join" class="bg-brand-lime text-black font-black text-sm uppercase tracking-widest px-10 py-5 rounded-none sm:rounded-lg text-center hover:bg-white transition-all transform hover:scale-[1.02] shadow-[0_0_30px_rgba(210,248,2,0.25)]">
             Подать заявку в клуб
@@ -164,26 +157,32 @@
 
       </div>
 
-      <!-- Правая колонка: Атмосферное фото + Круглый неоновый бейдж (как на референсе) -->
-      <div class="lg:col-span-5 relative mt-6 lg:mt-0">
+      <!-- Правая колонка: Увеличенное растянутое фото + Круг-кнопка "Гостевой визит" -->
+      <div class="lg:col-span-6 relative mt-6 lg:mt-0">
         
-        <!-- Контейнер вертикальной фотографии -->
-        <div class="relative w-full h-[480px] sm:h-[580px] rounded-2xl overflow-hidden border border-brand-border bg-brand-card shadow-2xl">
+        <!-- Растянутый вертикальный контейнер фотографии -->
+        <div class="relative w-full h-[520px] sm:h-[640px] lg:h-[680px] rounded-3xl overflow-hidden border border-brand-border bg-brand-card shadow-2xl">
           <img 
-            src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1200&q=80" 
-            alt="Атлет на беговом треке" 
-            class="w-full h-full object-cover object-center filter grayscale contrast-125 brightness-90"
+            src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1400&q=85" 
+            alt="Атлет на тренировке" 
+            class="w-full h-full object-cover object-center filter grayscale contrast-125 brightness-90 hover:scale-105 transition-transform duration-700"
           >
           <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-black/30 pointer-events-none"></div>
         </div>
 
-        <!-- Круглый неоновый бейдж (отсылка к правому кругу на референсе) -->
-        <div class="absolute -bottom-6 -right-4 sm:-bottom-8 sm:-right-8 w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-brand-lime text-black p-4 sm:p-5 flex flex-col justify-center items-center text-center shadow-[0_10px_40px_rgba(210,248,2,0.35)] transform rotate-6 hover:rotate-0 transition-transform">
-          <span class="text-[11px] sm:text-xs font-black uppercase tracking-tight leading-tight">
-            СПб · 0+ опыт <br>Спорт & Качественный нетворкинг
+        <!-- Зеленый круг: кнопка "Гостевой визит" с переходом к форме -->
+        <a href="#join" 
+           class="group absolute -bottom-6 -right-3 sm:-bottom-8 sm:-right-6 w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-brand-lime text-black p-4 sm:p-5 flex flex-col justify-center items-center text-center shadow-[0_10px_45px_rgba(210,248,2,0.4)] transform hover:scale-105 transition-all duration-300 cursor-pointer">
+          <span class="text-[10px] sm:text-xs font-black uppercase tracking-tight text-neutral-800">
+            СПб · Пробная встреча
           </span>
-          <span class="text-lg sm:text-xl font-black mt-1">★ ★</span>
-        </div>
+          <span class="text-sm sm:text-base font-black uppercase tracking-tight leading-tight mt-1 group-hover:underline">
+            Гостевой визит
+          </span>
+          <span class="mt-1 text-lg sm:text-xl font-black group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+            ↗
+          </span>
+        </a>
 
       </div>
 
@@ -334,19 +333,19 @@
       </div>
 
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-brand-dark p-8 rounded-2xl border border-brand-border">
+        <div class="bg-brand-dark p-8 rounded-xl border border-brand-border">
           <h3 class="text-lg font-bold mb-2">Низкий порог входа</h3>
           <p class="text-neutral-400 text-sm">
             Не нужно годами ставить подачу. 15 минут инструктажа перед матчем — и вы уже играете динамичный розыгрыш через стенки корта.
           </p>
         </div>
-        <div class="bg-brand-dark p-8 rounded-2xl border border-brand-border">
+        <div class="bg-brand-dark p-8 rounded-xl border border-brand-border">
           <h3 class="text-lg font-bold mb-2">Формат: Только игры</h3>
           <p class="text-neutral-400 text-sm">
             Бронируем современные корты, формируем сбалансированные пары игроков по уровню и проводим регулярные клубные матчи и мини-турниры.
           </p>
         </div>
-        <div class="bg-brand-dark p-8 rounded-2xl border border-brand-border">
+        <div class="bg-brand-dark p-8 rounded-xl border border-brand-border">
           <h3 class="text-lg font-bold mb-2">Экипировка на месте</h3>
           <p class="text-neutral-400 text-sm">
             Ракетки и мячи предоставляются клубом. Вам нужны только удобные кроссовки и спортивная форма.
@@ -356,7 +355,7 @@
     </div>
   </section>
 
-  <!-- Блок: Форматы участия с интерактивной рамкой -->
+  <!-- Блок: Форматы участия -->
   <section id="formats" class="py-24 px-6 max-w-7xl mx-auto">
     <div class="text-center max-w-2xl mx-auto mb-16">
       <h2 class="text-xs font-bold text-brand-lime uppercase tracking-widest mb-3">Членство в клубе</h2>
@@ -429,14 +428,14 @@
     </div>
   </section>
 
-  <!-- Форма захвата заявки -->
+  <!-- Форма заявки -->
   <section id="join" class="py-24 bg-brand-card border-t border-brand-border px-6">
     <div class="max-w-2xl mx-auto">
       <div class="text-center mb-10">
         <span class="text-xs font-bold text-brand-lime uppercase tracking-widest">Анкета кандидата</span>
         <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight mt-2">Подать заявку в «Свой круг»</h2>
         <p class="text-neutral-400 text-sm mt-3">
-          Мы свяжемся с вами в Telegram или по телефону, расскажем подробности по расписанию и согласуем дату визита.
+          Мы свяжемся с вами в Telegram или WhatsApp, расскажем подробности по расписанию и согласуем дату визита.
         </p>
       </div>
 
@@ -460,10 +459,10 @@
         <div>
           <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">Что интересует в первую очередь?</label>
           <select name="interest" id="interestSelect" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-colors">
+            <option value="guest">Гостевой тестовый визит</option>
             <option value="all">И бег, и падел-теннис (Full резидентство)</option>
             <option value="run">Только беговой клуб (манеж/стадионы/парки)</option>
             <option value="padel">Только игры в падел-теннис</option>
-            <option value="guest">Гостевой тестовый визит</option>
           </select>
         </div>
 
@@ -488,11 +487,10 @@
     </div>
   </section>
 
-  <!-- Футер с соцсетями (Telegram, YouTube, VK) -->
+  <!-- Футер -->
   <footer class="py-12 border-t border-brand-border px-6 text-xs text-neutral-500 bg-brand-dark">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
       
-      <!-- Логотип и копирайт -->
       <div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
         <div class="flex items-center gap-2">
           <span class="w-2.5 h-2.5 rounded-full bg-brand-lime"></span>
@@ -502,7 +500,6 @@
         <span>© 2026 Санкт-Петербург. Спортивное бизнес-сообщество</span>
       </div>
 
-      <!-- Иконки соцсетей -->
       <div class="flex items-center gap-3">
         <!-- Telegram -->
         <a href="https://t.me/" target="_blank" rel="noopener noreferrer" 
@@ -537,7 +534,7 @@
 
   <!-- Скрипты -->
   <script>
-    // 1. Мобильное меню (по клику)
+    // 1. Мобильное меню
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     mobileMenuBtn.addEventListener('click', () => {
@@ -578,7 +575,7 @@
       }, 500);
     }, 2400);
 
-    // 3. Интерактивная рамка тарифов с возвратом на Full Resident
+    // 3. Тарифы
     const pricingGrid = document.getElementById('pricingGrid');
     const cards = pricingGrid.querySelectorAll('.pricing-card');
     const defaultCard = pricingGrid.querySelector('[data-plan="resident"]');
