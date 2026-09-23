@@ -91,7 +91,7 @@
         СВОЙ КРУГ
       </a>
 
-      <!-- Ссылки видны на 25%, при hover загораются салатовым -->
+      <!-- Ссылки: 25% видимости, при наведении салатовый цвет -->
       <nav class="hidden md:flex items-center gap-8 text-xs sm:text-sm font-bold tracking-wider uppercase">
         <a href="#about" class="text-white/25 hover:text-brand-lime transition-all duration-300">О клубе</a>
         <a href="#running" class="text-white/25 hover:text-brand-lime transition-all duration-300">Бег</a>
@@ -141,8 +141,10 @@
           </span>
         </h1>
 
-        <p class="text-base text-neutral-400 max-w-lg font-normal leading-relaxed mb-10">
-          Регулярные беговые тренировки с профессиональным тренерским составом. Закрытые тренировки и турниры по падел-теннису в Санкт-Петербурге. Наша цель не собрать спортсменов-профессионалов, а объединить предпринимателей и управленцев любого спортивного бэкграунда.
+        <!-- Описание со строгим переносом на новую строку -->
+        <p class="text-base text-neutral-400 max-w-xl font-normal leading-relaxed mb-10">
+          <span>Регулярные беговые тренировки с профессиональным тренерским составом.</span>
+          <span class="block mt-2">Игровые тренировки и турниры по падел-теннису в Санкт-Петербурге. Наша цель не собрать спортсменов-профессионалов, а объединить предпринимателей и управленцев любого спортивного бэкграунда.</span>
         </p>
 
         <!-- Прямоугольная акцентная кнопка -->
@@ -160,7 +162,6 @@
       <!-- Правая колонка: Растянутое фото + Круг "Оформить гостевой визит" -->
       <div class="lg:col-span-6 relative mt-6 lg:mt-0">
         
-        <!-- Растянутый вертикальный контейнер фотографии -->
         <div class="relative w-full h-[520px] sm:h-[640px] lg:h-[680px] rounded-3xl overflow-hidden border border-brand-border bg-brand-card shadow-2xl">
           <img 
             src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1400&q=85" 
@@ -170,7 +171,7 @@
           <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-black/30 pointer-events-none"></div>
         </div>
 
-        <!-- Круг-кнопка строго с надписью по центру -->
+        <!-- Круглая кнопка строго по центру -->
         <a href="#join" 
            class="group absolute -bottom-6 -right-3 sm:-bottom-8 sm:-right-6 w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-brand-lime text-black p-4 flex items-center justify-center text-center shadow-[0_10px_45px_rgba(210,248,2,0.4)] transform hover:scale-105 transition-all duration-300 cursor-pointer">
           <span class="text-xs sm:text-sm font-black uppercase tracking-tight leading-snug">
@@ -189,50 +190,77 @@
 
       <div class="animate-marquee items-center gap-8 text-xs sm:text-sm font-black uppercase tracking-wider text-neutral-300">
         <span class="inline-flex items-center gap-3">
-          <span class="text-brand-lime">★★ ПРОЕКТ M&M DIGITAL AGENCY ★★</span>
-          <span class="text-brand-muted">●</span>
           <span>ПЕРВОЕ СПОРТИВНОЕ БИЗНЕС-КОМЬЮНИТИ В Г. САНКТ-ПЕТЕРБУРГ И НЕ ТОЛЬКО</span>
-          <span class="text-brand-lime">★</span>
+          <span class="text-brand-lime">★ПРОЕКТ M&M DIGITAL AGENCY★</span>
+          <span class="text-brand-muted">●</span>
         </span>
         <span class="inline-flex items-center gap-3">
-          <span class="text-brand-lime">★★ ПРОЕКТ M&M DIGITAL AGENCY ★★</span>
-          <span class="text-brand-muted">●</span>
           <span>ПЕРВОЕ СПОРТИВНОЕ БИЗНЕС-КОМЬЮНИТИ В Г. САНКТ-ПЕТЕРБУРГ И НЕ ТОЛЬКО</span>
-          <span class="text-brand-lime">★</span>
+          <span class="text-brand-lime">★ПРОЕКТ M&M DIGITAL AGENCY★</span>
+          <span class="text-brand-muted">●</span>
         </span>
         <span class="inline-flex items-center gap-3">
-          <span class="text-brand-lime">★★ ПРОЕКТ M&M DIGITAL AGENCY ★★</span>
-          <span class="text-brand-muted">●</span>
           <span>ПЕРВОЕ СПОРТИВНОЕ БИЗНЕС-КОМЬЮНИТИ В Г. САНКТ-ПЕТЕРБУРГ И НЕ ТОЛЬКО</span>
-          <span class="text-brand-lime">★</span>
+          <span class="text-brand-lime">★ПРОЕКТ M&M DIGITAL AGENCY★</span>
+          <span class="text-brand-muted">●</span>
         </span>
         <span class="inline-flex items-center gap-3">
-          <span class="text-brand-lime">★★ ПРОЕКТ M&M DIGITAL AGENCY ★★</span>
-          <span class="text-brand-muted">●</span>
           <span>ПЕРВОЕ СПОРТИВНОЕ БИЗНЕС-КОМЬЮНИТИ В Г. САНКТ-ПЕТЕРБУРГ И НЕ ТОЛЬКО</span>
-          <span class="text-brand-lime">★</span>
+          <span class="text-brand-lime">★ПРОЕКТ M&M DIGITAL AGENCY★</span>
+          <span class="text-brand-muted">●</span>
         </span>
       </div>
     </div>
 
-    <!-- Цифры и факты -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-brand-border pt-10 mt-6">
-      <div>
-        <p class="text-3xl sm:text-4xl font-black text-brand-lime">0+</p>
-        <p class="text-xs sm:text-sm text-neutral-400 mt-1 uppercase tracking-wider">Любой уровень подготовки</p>
+    <!-- 4 блока с идеально ровными отступами и высотой -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 border-t border-brand-border pt-10 mt-6">
+      
+      <!-- Блок 1 -->
+      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-6 flex flex-col justify-start">
+        <div class="min-h-[56px] flex items-center">
+          <p class="text-4xl font-black text-brand-lime">0+</p>
+        </div>
+        <p class="text-xs sm:text-sm text-neutral-400 mt-2 uppercase tracking-wider leading-relaxed">
+          Любой уровень подготовки
+        </p>
       </div>
-      <div>
-        <p class="text-xl sm:text-2xl font-black text-white uppercase">Манеж / стадионы / парки</p>
-        <p class="text-xs sm:text-sm text-neutral-400 mt-1">Зимой в тепле, летом на воздухе</p>
+
+      <!-- Блок 2 -->
+      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-6 flex flex-col justify-start">
+        <div class="min-h-[56px] flex items-center">
+          <p class="text-base sm:text-lg font-black text-white uppercase leading-snug">
+            БЕГ В МАНЕЖЕ / СТАДИОНЕ / ПАРКЕ
+          </p>
+        </div>
+        <p class="text-xs sm:text-sm text-neutral-400 mt-2 leading-relaxed">
+          Зимой в тепле, летом на воздухе
+        </p>
       </div>
-      <div>
-        <p class="text-xl sm:text-2xl font-black text-brand-lime uppercase">Padel</p>
-        <p class="text-xs sm:text-sm text-neutral-400 mt-1">От новичков до рейтинговых игр</p>
+
+      <!-- Блок 3 -->
+      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-6 flex flex-col justify-start">
+        <div class="min-h-[56px] flex items-center">
+          <p class="text-xl sm:text-2xl font-black text-brand-lime uppercase leading-snug">
+            PADEL
+          </p>
+        </div>
+        <p class="text-xs sm:text-sm text-neutral-400 mt-2 leading-relaxed">
+          От никогда не играл до рейтинговых игр
+        </p>
       </div>
-      <div>
-        <p class="text-xl sm:text-2xl font-black text-white uppercase">Network</p>
-        <p class="text-xs sm:text-sm text-neutral-400 mt-1">Завтраки и общение без регалий</p>
+
+      <!-- Блок 4 -->
+      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-6 flex flex-col justify-start">
+        <div class="min-h-[56px] flex items-center">
+          <p class="text-xl sm:text-2xl font-black text-white uppercase leading-snug">
+            ВСТРЕЧИ
+          </p>
+        </div>
+        <p class="text-xs sm:text-sm text-neutral-400 mt-2 leading-relaxed">
+          Завтраки и общение без регалий
+        </p>
       </div>
+
     </div>
 
   </section>
@@ -378,7 +406,7 @@
         </a>
       </div>
 
-      <!-- Карточка 2: Full Resident (По умолчанию активная) -->
+      <!-- Карточка 2: Full Resident -->
       <div data-plan="resident" class="pricing-card active-plan bg-brand-card border-2 border-brand-lime p-8 rounded-2xl flex flex-col justify-between transition-all duration-300 relative shadow-xl shadow-brand-lime/10 cursor-pointer">
         <div class="plan-badge absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-lime text-black text-xs font-black uppercase px-4 py-1 rounded-full opacity-100 transition-opacity duration-300">
           Хит сезона
@@ -518,7 +546,7 @@
            class="w-10 h-10 rounded-xl bg-brand-card border border-brand-border flex items-center justify-center text-neutral-400 hover:text-brand-lime hover:border-brand-lime transition-all transform hover:-translate-y-0.5"
            title="ВКонтакте">
           <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-            <path d="M15.684 0H8.316C2.992 0 0 2.992 0 8.316v7.368C0 21.008 2.992 24 8.316 24h7.368C21.008 24 24 21.008 24 15.684V8.316C24 2.992 21.008 0 15.684 0zm3.602 17.297h-1.637c-.62 0-.81-.493-1.924-1.61-.97-.947-1.398-1.07-1.637-1.07-.334 0-.43.096-.43.55v1.442c0 .383-.12.614-1.124.614-1.657 0-3.498-1.006-4.793-2.875-1.96-2.774-2.502-4.86-2.502-5.289 0-.24.096-.456.55-.456h1.638c.407 0 .563.192.718.623.79 2.298 2.106 4.31 2.657 4.31.215 0 .31-.096.31-.623v-2.42c-.072-1.099-.646-1.196-.646-1.589 0-.192.167-.383.43-.383h2.56c.358 0 .479.192.479.599v3.257c0 .359.156.479.263.479.215 0 .383-.12.766-.503 1.196-1.34 2.057-3.424 2.057-3.424.12-.24.31-.456.718-.456h1.638c.493 0 .6.24.493.599-.215.98-2.274 3.878-2.37 4.045-.24.359-.334.526 0 .957.24.335 1.052 1.029 1.589 1.652.981 1.125 1.723 2.057 1.938 2.704.096.383-.096.574-.479.574z"/>
+            <path d="M15.684 0H8.316C2.992 0 0 2.992 0 8.316v7.368C0 21.008 2.992 24 8.316 24h7.368C21.008 24 24 21.008 24 15.684V8.316C21.008 2.992 21.008 0 15.684 0zm3.602 17.297h-1.637c-.62 0-.81-.493-1.924-1.61-.97-.947-1.398-1.07-1.637-1.07-.334 0-.43.096-.43.55v1.442c0 .383-.12.614-1.124.614-1.657 0-3.498-1.006-4.793-2.875-1.96-2.774-2.502-4.86-2.502-5.289 0-.24.096-.456.55-.456h1.638c.407 0 .563.192.718.623.79 2.298 2.106 4.31 2.657 4.31.215 0 .31-.096.31-.623v-2.42c-.072-1.099-.646-1.196-.646-1.589 0-.192.167-.383.43-.383h2.56c.358 0 .479.192.479.599v3.257c0 .359.156.479.263.479.215 0 .383-.12.766-.503 1.196-1.34 2.057-3.424 2.057-3.424.12-.24.31-.456.718-.456h1.638c.493 0 .6.24.493.599-.215.98-2.274 3.878-2.37 4.045-.24.359-.334.526 0 .957.24.335 1.052 1.029 1.589 1.652.981 1.125 1.723 2.057 1.938 2.704.096.383-.096.574-.479.574z"/>
           </svg>
         </a>
       </div>
