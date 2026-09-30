@@ -46,38 +46,28 @@
       animation-play-state: paused;
     }
 
-    /* Идеальный ротатор: без рамок, выравнивание строго по базовой линии текста */
-    .word-rotator-wrapper {
-      display: inline-block;
-      vertical-align: baseline;
-      position: relative;
+    /* Надежный ротатор на базе ленты: слова никогда не улетают выше базовой линии */
+    .rotator-track {
+      display: inline-flex;
+      flex-direction: column;
+      height: 1.15em;
+      line-height: 1.15;
       overflow: hidden;
-      height: 1em;
-      line-height: 1;
-      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      vertical-align: baseline;
+      transition: width 0.3s ease;
     }
 
-    .word-item {
-      position: absolute;
-      left: 0;
-      top: 0;
+    .rotator-slider {
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .rotator-slider > span {
+      display: block;
+      height: 1.15em;
+      line-height: 1.15;
       white-space: nowrap;
-      opacity: 0;
-      transform: translateY(100%);
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
-      pointer-events: none;
-      line-height: 1;
-    }
-
-    .word-item.active {
-      opacity: 1;
-      transform: translateY(0%);
-      pointer-events: auto;
-    }
-
-    .word-item.exit {
-      opacity: 0;
-      transform: translateY(-100%);
     }
   </style>
 </head>
@@ -131,25 +121,27 @@
             <span>●</span> Первое спортивное бизнес сообщество
           </div>
 
-          <!-- Заголовок с одинаковыми отступами и идеальной базовой линией "ИЗ" -->
+          <!-- Заголовок: единая базовая линия шрифта -->
           <h1 class="text-3xl sm:text-5xl lg:text-[3.2rem] font-black uppercase tracking-tight flex flex-col gap-3.5 mb-8">
-            <span class="leading-none block">МЫ ОБЪЕДИНЯЕМ ФАУНДЕРОВ</span>
-            <span class="leading-none block">И РУКОВОДИТЕЛЕЙ</span>
-            <div class="leading-none flex items-baseline gap-3 flex-wrap sm:flex-nowrap">
+            <span class="block">МЫ ОБЪЕДИНЯЕМ ФАУНДЕРОВ</span>
+            <span class="block">И РУКОВОДИТЕЛЕЙ</span>
+            <div class="flex items-baseline gap-3 flex-wrap sm:flex-nowrap">
               <span>ИЗ</span>
-              <span class="word-rotator-wrapper text-brand-lime" id="rotatorWrapper">
-                <span class="word-item active">IT & РАЗРАБОТКИ</span>
-                <span class="word-item">ПРОИЗВОДСТВА</span>
-                <span class="word-item">РИТЕЙЛА & E-COM</span>
-                <span class="word-item">СТРОИТЕЛЬСТВА</span>
-                <span class="word-item">КОНСАЛТИНГА</span>
-                <span class="word-item">СФЕРЫ УСЛУГ</span>
-                <span class="word-item">ИНВЕСТИЦИЙ</span>
-              </span>
+              <div class="rotator-track text-brand-lime" id="rotatorTrack">
+                <div class="rotator-slider" id="rotatorSlider">
+                  <span>IT & РАЗРАБОТКИ</span>
+                  <span>ПРОИЗВОДСТВА</span>
+                  <span>РИТЕЙЛА & E-COM</span>
+                  <span>СТРОИТЕЛЬСТВА</span>
+                  <span>КОНСАЛТИНГА</span>
+                  <span>СФЕРЫ УСЛУГ</span>
+                  <span>ИНВЕСТИЦИЙ</span>
+                </div>
+              </div>
             </div>
           </h1>
 
-          <!-- Текст с переносом Санкт-Петербурга целиком на новую строчку -->
+          <!-- Текст без висячего союза "а" -->
           <div class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed space-y-4 mb-8">
             <p>
               Регулярные беговые тренировки с профессиональным тренерским составом.
@@ -158,7 +150,8 @@
               Игровые тренировки и турниры по падел-теннису<br class="hidden sm:inline"> в&nbsp;Санкт-Петербурге.
             </p>
             <p class="text-neutral-400">
-              <strong class="font-bold text-white">Наша цель</strong> не собрать спортсменов-профессионалов, а объединить предпринимателей и управленцев любого спортивного бэкграунда.
+              <strong class="font-bold text-white">Наша цель</strong> не собрать спортсменов-профессионалов,<br class="hidden sm:inline">
+              а&nbsp;объединить предпринимателей и управленцев любого спортивного бэкграунда.
             </p>
           </div>
         </div>
@@ -224,37 +217,37 @@
       </div>
     </div>
 
-    <!-- 4 блока преимуществ: одинаковый шрифт, в одну строчку каждый -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 border-t border-brand-border pt-10 mt-6">
+    <!-- 4 блока преимуществ: без троеточий, строго в одну строку на любом экране -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 border-t border-brand-border pt-10 mt-6">
       
       <!-- Блок 1 -->
-      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-6 flex flex-col justify-center">
+      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-5 flex flex-col justify-center">
         <p class="text-2xl sm:text-3xl font-black text-brand-lime uppercase tracking-tight leading-none mb-3">0+</p>
-        <p class="text-xs sm:text-sm text-neutral-400 font-semibold tracking-wider uppercase whitespace-nowrap overflow-hidden text-ellipsis">
+        <p class="text-[11px] sm:text-xs xl:text-sm font-bold text-neutral-400 uppercase tracking-tight sm:tracking-normal whitespace-nowrap">
           ЛЮБОЙ УРОВЕНЬ ПОДГОТОВКИ
         </p>
       </div>
 
       <!-- Блок 2 -->
-      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-6 flex flex-col justify-center">
+      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-5 flex flex-col justify-center">
         <p class="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight leading-none mb-3">БЕГ</p>
-        <p class="text-xs sm:text-sm text-neutral-400 font-semibold tracking-wider uppercase whitespace-nowrap overflow-hidden text-ellipsis">
+        <p class="text-[11px] sm:text-xs xl:text-sm font-bold text-neutral-400 uppercase tracking-tight sm:tracking-normal whitespace-nowrap">
           ЗИМОЙ В ТЕПЛЕ, ЛЕТОМ НА ВОЗДУХЕ
         </p>
       </div>
 
       <!-- Блок 3 -->
-      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-6 flex flex-col justify-center">
+      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-5 flex flex-col justify-center">
         <p class="text-2xl sm:text-3xl font-black text-brand-lime uppercase tracking-tight leading-none mb-3">PADEL</p>
-        <p class="text-xs sm:text-sm text-neutral-400 font-semibold tracking-wider uppercase whitespace-nowrap overflow-hidden text-ellipsis">
+        <p class="text-[11px] sm:text-xs xl:text-sm font-bold text-neutral-400 uppercase tracking-tight sm:tracking-normal whitespace-nowrap">
           ОТ НОВИЧКА ДО РЕЙТИНГОВЫХ ИГР
         </p>
       </div>
 
       <!-- Блок 4 -->
-      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-6 flex flex-col justify-center">
+      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-5 flex flex-col justify-center">
         <p class="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight leading-none mb-3">ВСТРЕЧИ</p>
-        <p class="text-xs sm:text-sm text-neutral-400 font-semibold tracking-wider uppercase whitespace-nowrap overflow-hidden text-ellipsis">
+        <p class="text-[11px] sm:text-xs xl:text-sm font-bold text-neutral-400 uppercase tracking-tight sm:tracking-normal whitespace-nowrap">
           ЗАВТРАКИ И ОБЩЕНИЕ БЕЗ РЕГАЛИЙ
         </p>
       </div>
@@ -570,35 +563,22 @@
       link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
     });
 
-    // 2. Логика Word Rotator
-    const wrapper = document.getElementById('rotatorWrapper');
-    const words = Array.from(wrapper.getElementsByClassName('word-item'));
+    // 2. Линейный скролл-ротатор слов
+    const track = document.getElementById('rotatorTrack');
+    const slider = document.getElementById('rotatorSlider');
+    const items = slider.querySelectorAll('span');
     let currentIndex = 0;
 
-    function updateWrapperWidth(element) {
-      wrapper.style.width = element.offsetWidth + 'px';
+    function syncWidth() {
+      track.style.width = items[currentIndex].offsetWidth + 'px';
     }
 
-    window.addEventListener('load', () => {
-      updateWrapperWidth(words[0]);
-    });
+    window.addEventListener('load', syncWidth);
 
     setInterval(() => {
-      const currentWord = words[currentIndex];
-      currentIndex = (currentIndex + 1) % words.length;
-      const nextWord = words[currentIndex];
-
-      currentWord.classList.remove('active');
-      currentWord.classList.add('exit');
-
-      nextWord.classList.remove('exit');
-      nextWord.classList.add('active');
-
-      updateWrapperWidth(nextWord);
-
-      setTimeout(() => {
-        currentWord.classList.remove('exit');
-      }, 500);
+      currentIndex = (currentIndex + 1) % items.length;
+      slider.style.transform = `translateY(-${currentIndex * 1.15}em)`;
+      syncWidth();
     }, 2400);
 
     // 3. Тарифы
