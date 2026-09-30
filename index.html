@@ -46,27 +46,27 @@
       animation-play-state: paused;
     }
 
-    /* Идеально выровненный ротатор слов */
+    /* Идеальный ротатор: без рамок, выравнивание строго по базовой линии текста */
     .word-rotator-wrapper {
-      display: inline-flex;
+      display: inline-block;
+      vertical-align: baseline;
       position: relative;
       overflow: hidden;
-      height: 1.18em;
-      line-height: 1.18;
-      vertical-align: bottom;
-      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 1em;
+      line-height: 1;
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .word-item {
       position: absolute;
       left: 0;
-      bottom: 0;
+      top: 0;
       white-space: nowrap;
       opacity: 0;
       transform: translateY(100%);
       transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
       pointer-events: none;
-      line-height: 1.18;
+      line-height: 1;
     }
 
     .word-item.active {
@@ -118,12 +118,12 @@
     </div>
   </header>
 
-  <!-- Hero Screen с выравниванием по высоте фотографии -->
+  <!-- Hero Screen -->
   <section class="min-h-screen pt-28 pb-12 px-6 max-w-7xl mx-auto flex flex-col justify-center">
     
     <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
       
-      <!-- Левая колонка: Заполняет высоту фотографии без пустоты внизу -->
+      <!-- Левая колонка -->
       <div class="lg:col-span-6 flex flex-col justify-between py-2">
         
         <div>
@@ -131,13 +131,13 @@
             <span>●</span> Первое спортивное бизнес сообщество
           </div>
 
-          <!-- Заголовок с комфортными межстрочными интервалами и строгим выравниванием "ИЗ" -->
-          <h1 class="text-3xl sm:text-5xl md:text-5xl lg:text-[3.25rem] font-black tracking-tight leading-[1.2] uppercase mb-8 space-y-2 sm:space-y-3">
-            <span class="block">МЫ ОБЪЕДИНЯЕМ ФАУНДЕРОВ</span>
-            <span class="block">И РУКОВОДИТЕЛЕЙ</span>
-            <span class="flex items-baseline gap-3 flex-wrap sm:flex-nowrap">
+          <!-- Заголовок с одинаковыми отступами и идеальной базовой линией "ИЗ" -->
+          <h1 class="text-3xl sm:text-5xl lg:text-[3.2rem] font-black uppercase tracking-tight flex flex-col gap-3.5 mb-8">
+            <span class="leading-none block">МЫ ОБЪЕДИНЯЕМ ФАУНДЕРОВ</span>
+            <span class="leading-none block">И РУКОВОДИТЕЛЕЙ</span>
+            <div class="leading-none flex items-baseline gap-3 flex-wrap sm:flex-nowrap">
               <span>ИЗ</span>
-              <span class="word-rotator-wrapper text-brand-lime border-b-2 border-brand-lime/40 pb-0.5" id="rotatorWrapper">
+              <span class="word-rotator-wrapper text-brand-lime" id="rotatorWrapper">
                 <span class="word-item active">IT & РАЗРАБОТКИ</span>
                 <span class="word-item">ПРОИЗВОДСТВА</span>
                 <span class="word-item">РИТЕЙЛА & E-COM</span>
@@ -146,16 +146,16 @@
                 <span class="word-item">СФЕРЫ УСЛУГ</span>
                 <span class="word-item">ИНВЕСТИЦИЙ</span>
               </span>
-            </span>
+            </div>
           </h1>
 
-          <!-- Единый шрифт, одинаковый размер и сбалансированные отступы -->
+          <!-- Текст с переносом Санкт-Петербурга целиком на новую строчку -->
           <div class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed space-y-4 mb-8">
             <p>
               Регулярные беговые тренировки с профессиональным тренерским составом.
             </p>
             <p>
-              Игровые тренировки и турниры по падел-теннису в Санкт-Петербурге.
+              Игровые тренировки и турниры по падел-теннису<br class="hidden sm:inline"> в&nbsp;Санкт-Петербурге.
             </p>
             <p class="text-neutral-400">
               <strong class="font-bold text-white">Наша цель</strong> не собрать спортсменов-профессионалов, а объединить предпринимателей и управленцев любого спортивного бэкграунда.
@@ -163,7 +163,7 @@
           </div>
         </div>
 
-        <!-- Кнопки действия внизу колонки -->
+        <!-- Кнопки действия -->
         <div class="flex flex-col sm:flex-row gap-4 pt-2">
           <a href="#join" class="bg-brand-lime text-black font-black text-sm uppercase tracking-widest px-10 py-5 rounded-none sm:rounded-lg text-center hover:bg-white transition-all transform hover:scale-[1.02] shadow-[0_0_30px_rgba(210,248,2,0.25)]">
             Подать заявку в клуб
@@ -224,46 +224,38 @@
       </div>
     </div>
 
-    <!-- 4 блока преимуществ -->
+    <!-- 4 блока преимуществ: одинаковый шрифт, в одну строчку каждый -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 border-t border-brand-border pt-10 mt-6">
       
       <!-- Блок 1 -->
-      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-6 flex flex-col justify-start">
-        <div class="min-h-[44px] flex items-center">
-          <p class="text-2xl sm:text-3xl font-black text-brand-lime uppercase tracking-tight">0+</p>
-        </div>
-        <p class="text-xs sm:text-sm text-neutral-400 font-medium mt-2 uppercase tracking-wider leading-relaxed min-h-[42px] flex items-center">
+      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-6 flex flex-col justify-center">
+        <p class="text-2xl sm:text-3xl font-black text-brand-lime uppercase tracking-tight leading-none mb-3">0+</p>
+        <p class="text-xs sm:text-sm text-neutral-400 font-semibold tracking-wider uppercase whitespace-nowrap overflow-hidden text-ellipsis">
           ЛЮБОЙ УРОВЕНЬ ПОДГОТОВКИ
         </p>
       </div>
 
       <!-- Блок 2 -->
-      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-6 flex flex-col justify-start">
-        <div class="min-h-[44px] flex items-center">
-          <p class="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight">БЕГ</p>
-        </div>
-        <p class="text-xs sm:text-sm text-neutral-400 font-medium mt-2 leading-relaxed min-h-[42px] flex items-center">
-          Зимой в тепле, летом на воздухе
+      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-6 flex flex-col justify-center">
+        <p class="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight leading-none mb-3">БЕГ</p>
+        <p class="text-xs sm:text-sm text-neutral-400 font-semibold tracking-wider uppercase whitespace-nowrap overflow-hidden text-ellipsis">
+          ЗИМОЙ В ТЕПЛЕ, ЛЕТОМ НА ВОЗДУХЕ
         </p>
       </div>
 
       <!-- Блок 3 -->
-      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-6 flex flex-col justify-start">
-        <div class="min-h-[44px] flex items-center">
-          <p class="text-2xl sm:text-3xl font-black text-brand-lime uppercase tracking-tight">PADEL</p>
-        </div>
-        <p class="text-xs sm:text-sm text-neutral-400 font-medium mt-2 leading-relaxed min-h-[42px] flex items-center">
-          От никогда не играл до рейтинговых игр
+      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-6 flex flex-col justify-center">
+        <p class="text-2xl sm:text-3xl font-black text-brand-lime uppercase tracking-tight leading-none mb-3">PADEL</p>
+        <p class="text-xs sm:text-sm text-neutral-400 font-semibold tracking-wider uppercase whitespace-nowrap overflow-hidden text-ellipsis">
+          ОТ НОВИЧКА ДО РЕЙТИНГОВЫХ ИГР
         </p>
       </div>
 
       <!-- Блок 4 -->
-      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-6 flex flex-col justify-start">
-        <div class="min-h-[44px] flex items-center">
-          <p class="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight">ВСТРЕЧИ</p>
-        </div>
-        <p class="text-xs sm:text-sm text-neutral-400 font-medium mt-2 leading-relaxed min-h-[42px] flex items-center">
-          Завтраки и общение без регалий
+      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-6 flex flex-col justify-center">
+        <p class="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight leading-none mb-3">ВСТРЕЧИ</p>
+        <p class="text-xs sm:text-sm text-neutral-400 font-semibold tracking-wider uppercase whitespace-nowrap overflow-hidden text-ellipsis">
+          ЗАВТРАКИ И ОБЩЕНИЕ БЕЗ РЕГАЛИЙ
         </p>
       </div>
 
@@ -578,7 +570,7 @@
       link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
     });
 
-    // 2. Логика Word Rotator с идеальной фиксацией базовой линии
+    // 2. Логика Word Rotator
     const wrapper = document.getElementById('rotatorWrapper');
     const words = Array.from(wrapper.getElementsByClassName('word-item'));
     let currentIndex = 0;
