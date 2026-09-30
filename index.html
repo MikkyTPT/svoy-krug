@@ -363,7 +363,7 @@
     </div>
   </section>
 
-  <!-- Блок: Падел-теннис -->
+  <!-- Блок: Падел-теннис (С аккуратными переносами строк) -->
   <section id="padel" class="py-14 sm:py-16 bg-brand-card border-y border-brand-border px-6">
     <div class="max-w-7xl mx-auto">
       <div class="mb-10 sm:mb-12">
@@ -372,29 +372,36 @@
       </div>
 
       <div class="grid md:grid-cols-3 gap-6">
+        <!-- Карточка 1 -->
         <div class="bg-brand-dark p-8 rounded-2xl border border-brand-border">
           <h3 class="text-brand-lime font-black text-lg mb-2">Низкий порог входа</h3>
-          <p class="text-neutral-400 text-sm leading-relaxed">
-            Не нужно годами ставить подачу. 15 минут инструктажа перед матчем — и вы уже играете динамичный розыгрыш через стенки корта.
-          </p>
+          <div class="text-neutral-400 text-sm leading-relaxed space-y-2">
+            <p>Не нужно годами ставить подачу.</p>
+            <p>15 минут инструктажа перед матчем — и вы уже играете динамичный розыгрыш через стенки корта.</p>
+          </div>
         </div>
+
+        <!-- Карточка 2 -->
         <div class="bg-brand-dark p-8 rounded-2xl border border-brand-border">
           <h3 class="text-brand-lime font-black text-lg mb-2">Формат: Только игры</h3>
           <p class="text-neutral-400 text-sm leading-relaxed">
             Бронируем современные корты, формируем сбалансированные пары игроков по уровню и проводим регулярные клубные матчи и мини-турниры.
           </p>
         </div>
+
+        <!-- Карточка 3 (Обновленный текст с переносом) -->
         <div class="bg-brand-dark p-8 rounded-2xl border border-brand-border">
           <h3 class="text-brand-lime font-black text-lg mb-2">Экипировка на месте</h3>
-          <p class="text-neutral-400 text-sm leading-relaxed">
-            Ракетки и мячи предоставляются клубом. Вам нужны только удобные кроссовки и спортивная форма.
-          </p>
+          <div class="text-neutral-400 text-sm leading-relaxed space-y-2">
+            <p>Ракетки, мячи и вода предоставляются клубом.</p>
+            <p>Вам нужны только удобные кроссовки и спортивная форма.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Блок: Форматы участия -->
+  <!-- Блок: Форматы участия (С динамической салатовой подсветкой пунктов ✓) -->
   <section id="formats" class="py-14 sm:py-16 px-6 max-w-7xl mx-auto">
     <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-14">
       <h2 class="text-xs font-bold text-brand-lime uppercase tracking-widest mb-2">Членство в клубе</h2>
@@ -412,10 +419,10 @@
           <span class="text-xs font-bold text-neutral-400 uppercase tracking-wider">Знакомство</span>
           <h3 class="text-2xl font-bold mt-2 mb-4">Гостевой визит</h3>
           <p class="text-neutral-400 text-sm mb-6">Идеально, чтобы попробовать формат, познакомиться с тренерами и резидентами клуба.</p>
-          <ul class="text-sm text-neutral-300 space-y-3 mb-8">
-            <li class="flex items-center gap-2">✓ 1 тренировка по бегу или участие в игре падел</li>
-            <li class="flex items-center gap-2">✓ Тестирование техники и уровня подготовки</li>
-            <li class="flex items-center gap-2">✓ Вход в закрытый гостевой чат</li>
+          <ul class="plan-features text-sm text-neutral-300 space-y-3 mb-8 transition-colors duration-300">
+            <li class="flex items-center gap-2"><span class="feature-check text-neutral-500 font-bold transition-colors">✓</span> <span>1 тренировка по бегу или участие в игре падел</span></li>
+            <li class="flex items-center gap-2"><span class="feature-check text-neutral-500 font-bold transition-colors">✓</span> <span>Тестирование техники и уровня подготовки</span></li>
+            <li class="flex items-center gap-2"><span class="feature-check text-neutral-500 font-bold transition-colors">✓</span> <span>Вход в закрытый гостевой чат</span></li>
           </ul>
         </div>
         <a href="#join" class="plan-btn w-full block text-center py-3.5 rounded-xl border border-brand-border text-white font-bold text-sm transition-all duration-300">
@@ -423,7 +430,7 @@
         </a>
       </div>
 
-      <!-- Карточка 2: Стать резидентом -->
+      <!-- Карточка 2: Стать резидентом (По умолчанию активная) -->
       <div data-plan="resident" class="pricing-card active-plan bg-brand-card border-2 border-brand-lime p-8 rounded-2xl flex flex-col justify-between transition-all duration-300 relative shadow-xl shadow-brand-lime/10 cursor-pointer">
         <div class="plan-badge absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-lime text-black text-xs font-black uppercase px-4 py-1 rounded-full opacity-100 transition-opacity duration-300">
           Хит сезона
@@ -432,11 +439,11 @@
           <span class="text-xs font-bold text-brand-lime uppercase tracking-wider">Максимум</span>
           <h3 class="text-2xl font-bold mt-2 mb-4">Стать резидентом</h3>
           <p class="text-neutral-400 text-sm mb-6">Полный доступ к спортивной и деловой инфраструктуре клуба на 1 месяц.</p>
-          <ul class="text-sm text-neutral-300 space-y-3 mb-8">
-            <li class="flex items-center gap-2">✓ 8 беговых тренировок</li>
-            <li class="flex items-center gap-2">✓ 4 слота на клубные игры в падел-теннис</li>
-            <li class="flex items-center gap-2">✓ Закрытый комьюнити-чат резидентов</li>
-            <li class="flex items-center gap-2">✓ Участие в завтраках и клубных выездах</li>
+          <ul class="plan-features text-sm text-neutral-300 space-y-3 mb-8 transition-colors duration-300">
+            <li class="flex items-center gap-2"><span class="feature-check text-brand-lime font-bold transition-colors">✓</span> <span>8 беговых тренировок</span></li>
+            <li class="flex items-center gap-2"><span class="feature-check text-brand-lime font-bold transition-colors">✓</span> <span>4 слота на клубные игры в падел-теннис</span></li>
+            <li class="flex items-center gap-2"><span class="feature-check text-brand-lime font-bold transition-colors">✓</span> <span>Закрытый комьюнити-чат резидентов</span></li>
+            <li class="flex items-center gap-2"><span class="feature-check text-brand-lime font-bold transition-colors">✓</span> <span>Участие в завтраках и клубных выездах</span></li>
           </ul>
         </div>
         <a href="#join" class="plan-btn w-full block text-center py-3.5 rounded-xl bg-brand-lime text-black font-extrabold text-sm transition-all duration-300">
@@ -453,11 +460,11 @@
           <span class="text-xs font-bold text-neutral-400 uppercase tracking-wider">Фокус</span>
           <h3 class="text-2xl font-bold mt-2 mb-4">Индивидуальный пакет</h3>
           <p class="text-neutral-400 text-sm mb-6">Для тех, кто хочет сфокусироваться только на беговой подготовке или только на паделе.</p>
-          <ul class="text-sm text-neutral-300 space-y-3 mb-8">
-            <li class="flex items-center gap-2">✓ Абонемент на 8 занятий бегом ИЛИ 4 игры в падел</li>
-            <li class="flex items-center gap-2">✓ Индивидуальный трекинг прогресса</li>
-            <li class="flex items-center gap-2">✓ Возможность индивидуальных тренировок по запросу</li>
-            <li class="flex items-center gap-2">✓ Доступ к клубным мероприятиям</li>
+          <ul class="plan-features text-sm text-neutral-300 space-y-3 mb-8 transition-colors duration-300">
+            <li class="flex items-center gap-2"><span class="feature-check text-neutral-500 font-bold transition-colors">✓</span> <span>Абонемент на 8 занятий бегом ИЛИ 4 игры в падел</span></li>
+            <li class="flex items-center gap-2"><span class="feature-check text-neutral-500 font-bold transition-colors">✓</span> <span>Индивидуальный трекинг прогресса</span></li>
+            <li class="flex items-center gap-2"><span class="feature-check text-neutral-500 font-bold transition-colors">✓</span> <span>Возможность индивидуальных тренировок по запросу</span></li>
+            <li class="flex items-center gap-2"><span class="feature-check text-neutral-500 font-bold transition-colors">✓</span> <span>Доступ к клубным мероприятиям</span></li>
           </ul>
         </div>
         <a href="#join" class="plan-btn w-full block text-center py-3.5 rounded-xl border border-brand-border text-white font-bold text-sm transition-all duration-300">
@@ -474,34 +481,34 @@
       <div class="text-center mb-10">
         <span class="text-xs font-bold text-brand-lime uppercase tracking-widest">Анкета кандидата</span>
         
-        <!-- Заголовок: без кружка, СВОЙ КРУГ в салатном цвете -->
         <h2 class="text-2xl sm:text-4xl font-black uppercase tracking-tight mt-2">
           ПОДАТЬ ЗАЯВКУ В <span class="text-brand-lime">«СВОЙ КРУГ»</span>
         </h2>
         
-        <!-- Подзаголовок: перенос союза "и" -->
         <p class="text-neutral-400 text-sm mt-3 leading-relaxed">
           Мы свяжемся с вами в Telegram или по телефону, расскажем подробности по расписанию<br class="hidden sm:inline">
           и&nbsp;согласуем дату визита.
         </p>
       </div>
 
-      <!-- Все поля формы с атрибутом required -->
       <form id="leadForm" class="space-y-4 bg-brand-dark p-8 rounded-2xl border border-brand-border">
+        <!-- Поле Имя с фильтром только букв -->
         <div>
           <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
             Ваше имя <span class="text-brand-lime">*</span>
           </label>
-          <input type="text" name="name" required placeholder="Имя" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-colors">
+          <input type="text" name="name" id="nameInput" required placeholder="Имя" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-colors">
         </div>
 
         <div class="grid sm:grid-cols-2 gap-4">
+          <!-- Телефон: только цифры и + -->
           <div>
             <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
               Телефон <span class="text-brand-lime">*</span>
             </label>
             <input type="tel" name="phone" id="phoneInput" required placeholder="+7 (___) ___-__-__" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-colors">
           </div>
+          <!-- Telegram: автоподстановка @ -->
           <div>
             <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
               Ваш юзернейм в Telegram <span class="text-brand-lime">*</span>
@@ -622,7 +629,7 @@
       syncWidth();
     }, 2400);
 
-    // 3. Тарифы
+    // 3. Тарифы с динамической подсветкой рамок и текста "✓"
     const pricingGrid = document.getElementById('pricingGrid');
     const cards = pricingGrid.querySelectorAll('.pricing-card');
     const defaultCard = pricingGrid.querySelector('[data-plan="resident"]');
@@ -632,6 +639,8 @@
       cards.forEach(card => {
         const btn = card.querySelector('.plan-btn');
         const badge = card.querySelector('.plan-badge');
+        const checkIcons = card.querySelectorAll('.feature-check');
+        const listItems = card.querySelectorAll('.plan-features li');
 
         if (card === activeCard) {
           card.classList.remove('border-brand-border');
@@ -644,6 +653,17 @@
             badge.classList.remove('opacity-0');
             badge.classList.add('opacity-100');
           }
+
+          // Подсветка текста и ✓ в салатовый тон
+          checkIcons.forEach(icon => {
+            icon.classList.remove('text-neutral-500');
+            icon.classList.add('text-brand-lime');
+          });
+          listItems.forEach(li => {
+            li.classList.remove('text-neutral-300');
+            li.classList.add('text-white');
+          });
+
         } else {
           card.classList.remove('border-brand-lime', 'shadow-xl', 'shadow-brand-lime/10', '-translate-y-1');
           card.classList.add('border-brand-border');
@@ -655,6 +675,16 @@
             badge.classList.remove('opacity-100');
             badge.classList.add('opacity-0');
           }
+
+          // Возврат к стандартному виду
+          checkIcons.forEach(icon => {
+            icon.classList.remove('text-brand-lime');
+            icon.classList.add('text-neutral-500');
+          });
+          listItems.forEach(li => {
+            li.classList.remove('text-white');
+            li.classList.add('text-neutral-300');
+          });
         }
       });
     }
@@ -673,11 +703,17 @@
       highlightCard(defaultCard);
     });
 
-    // 4. Маска телефона: строго цифры и знак плюс (буквы отсекаются)
+    // 4. Маска для поля Имя: строго буквы (русские/латиница), пробелы и дефис
+    const nameInput = document.getElementById('nameInput');
+    nameInput.addEventListener('input', (e) => {
+      e.target.value = e.target.value.replace(/[^a-zA-Zа-яА-ЯёЁ\s\-]/g, '');
+    });
+
+    // 5. Маска телефона: строго цифры и знак плюс (буквы отсекаются)
     const phoneInput = document.getElementById('phoneInput');
     phoneInput.addEventListener('input', (e) => {
-      let raw = e.target.value.replace(/[^\d+]/g, ''); // только цифры и +
-      let digits = raw.replace(/\D/g, ''); // чистые цифры
+      let raw = e.target.value.replace(/[^\d+]/g, '');
+      let digits = raw.replace(/\D/g, '');
       
       if (digits.startsWith('7') || digits.startsWith('8')) {
         digits = digits.substring(1);
@@ -692,7 +728,7 @@
       e.target.value = digits.length === 0 ? '' : res;
     });
 
-    // 5. Маска ника в Telegram: автоматический @ при вводе и вставке
+    // 6. Маска ника в Telegram: автоматический @ при вводе и вставке
     const tgInput = document.getElementById('tgInput');
     
     tgInput.addEventListener('focus', (e) => {
@@ -703,14 +739,8 @@
 
     tgInput.addEventListener('input', (e) => {
       let val = e.target.value.trim();
-      
-      // Очистка если вставили ссылку вида t.me/username или https://t.me/username
       val = val.replace(/^(https?:\/\/)?(www\.)?t\.me\//i, '');
-      
-      // Удаляем лишние пробелы и начальные @
       val = val.replace(/@+/g, '');
-
-      // Фильтруем разрешенные в tg символы (латиница, цифры, подчёркивание)
       val = val.replace(/[^a-zA-Z0-9_]/g, '');
 
       if (val.length > 0) {
@@ -726,7 +756,7 @@
       }
     });
 
-    // 6. Обработка формы
+    // 7. Обработка формы
     const form = document.getElementById('leadForm');
     const submitBtn = document.getElementById('submitBtn');
     const successMsg = document.getElementById('formSuccess');
@@ -734,7 +764,6 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       
-      // Проверка заполнения телефона и телеграма
       if (phoneInput.value.length < 18) {
         alert('Пожалуйста, введите полный номер телефона');
         phoneInput.focus();
