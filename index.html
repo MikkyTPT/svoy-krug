@@ -46,7 +46,7 @@
       animation-play-state: paused;
     }
 
-    /* Мягкая пульсация в ритме сердца (~2.6 сек, двойной импульс тук-тук) */
+    /* Мягкая пульсация в ритме сердца */
     @keyframes heartbeatRing {
       0% { transform: scale(1); opacity: 0.8; }
       14% { transform: scale(1.6); opacity: 0.4; }
@@ -101,7 +101,7 @@
 </head>
 <body class="bg-brand-dark text-white selection:bg-brand-lime selection:text-black antialiased">
 
-  <!-- Фиксированный хедер с пульсацией ритма сердца -->
+  <!-- Фиксированный хедер -->
   <header class="fixed top-0 left-0 right-0 z-50 h-20 bg-brand-dark/95 backdrop-blur-md border-b border-brand-border/80 flex items-center">
     <div class="max-w-7xl mx-auto w-full px-6 flex items-center justify-between">
       
@@ -468,49 +468,53 @@
     </div>
   </section>
 
-  <!-- Форма заявки: зеленый кружок перед «СВОЙ КРУГ» -->
+  <!-- Форма заявки -->
   <section id="join" class="py-20 bg-brand-card border-t border-brand-border px-6">
     <div class="max-w-2xl mx-auto">
       <div class="text-center mb-10">
         <span class="text-xs font-bold text-brand-lime uppercase tracking-widest">Анкета кандидата</span>
         
-        <!-- Заголовок формы с органично встроенным индикатором перед кавычками -->
-        <h2 class="text-2xl sm:text-4xl font-black uppercase tracking-tight mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
-          <span>ПОДАТЬ ЗАЯВКУ В</span>
-          <span class="inline-flex items-center gap-2.5">
-            <span class="relative flex h-3 w-3 items-center justify-center -translate-y-0.5">
-              <span class="heartbeat-ring absolute inline-flex h-full w-full rounded-full bg-brand-lime"></span>
-              <span class="heartbeat-dot relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-lime shadow-[0_0_10px_#D2F802]"></span>
-            </span>
-            <span>«СВОЙ КРУГ»</span>
-          </span>
+        <!-- Заголовок: без кружка, СВОЙ КРУГ в салатном цвете -->
+        <h2 class="text-2xl sm:text-4xl font-black uppercase tracking-tight mt-2">
+          ПОДАТЬ ЗАЯВКУ В <span class="text-brand-lime">«СВОЙ КРУГ»</span>
         </h2>
         
-        <p class="text-neutral-400 text-sm mt-3">
-          Мы свяжемся с вами в Telegram или по телефону, расскажем подробности по расписанию и согласуем дату визита.
+        <!-- Подзаголовок: перенос союза "и" -->
+        <p class="text-neutral-400 text-sm mt-3 leading-relaxed">
+          Мы свяжемся с вами в Telegram или по телефону, расскажем подробности по расписанию<br class="hidden sm:inline">
+          и&nbsp;согласуем дату визита.
         </p>
       </div>
 
+      <!-- Все поля формы с атрибутом required -->
       <form id="leadForm" class="space-y-4 bg-brand-dark p-8 rounded-2xl border border-brand-border">
         <div>
-          <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">Ваше имя</label>
+          <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
+            Ваше имя <span class="text-brand-lime">*</span>
+          </label>
           <input type="text" name="name" required placeholder="Имя" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-colors">
         </div>
 
         <div class="grid sm:grid-cols-2 gap-4">
           <div>
-            <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">Телефон</label>
+            <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
+              Телефон <span class="text-brand-lime">*</span>
+            </label>
             <input type="tel" name="phone" id="phoneInput" required placeholder="+7 (___) ___-__-__" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-colors">
           </div>
           <div>
-            <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">Telegram (@username)</label>
-            <input type="text" name="telegram" placeholder="@username" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-colors">
+            <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
+              Ваш юзернейм в Telegram <span class="text-brand-lime">*</span>
+            </label>
+            <input type="text" name="telegram" id="tgInput" required placeholder="@username" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-colors">
           </div>
         </div>
 
         <div>
-          <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">Что интересует в первую очередь?</label>
-          <select name="interest" id="interestSelect" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-colors">
+          <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
+            Что интересует в первую очередь? <span class="text-brand-lime">*</span>
+          </label>
+          <select name="interest" id="interestSelect" required class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-colors">
             <option value="guest">Гостевой тестовый визит</option>
             <option value="all">Стать резидентом (Бег и Падел-теннис)</option>
             <option value="run">Индивидуальный пакет (Бег / Падел по запросу)</option>
@@ -518,8 +522,10 @@
         </div>
 
         <div>
-          <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">Сфера деятельности / Бизнес (опционально)</label>
-          <input type="text" name="business" placeholder="IT, производство, сфера услуг..." class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-colors">
+          <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
+            Сфера деятельности / Бизнес <span class="text-brand-lime">*</span>
+          </label>
+          <input type="text" name="business" required placeholder="IT, производство, сфера услуг, консалтинг..." class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-colors">
         </div>
 
         <button type="submit" id="submitBtn" class="w-full bg-brand-lime text-black font-extrabold py-4 rounded-xl text-sm uppercase tracking-wider hover:bg-white transition-all mt-4">
@@ -667,28 +673,80 @@
       highlightCard(defaultCard);
     });
 
-    // 4. Маска телефона
+    // 4. Маска телефона: строго цифры и знак плюс (буквы отсекаются)
     const phoneInput = document.getElementById('phoneInput');
     phoneInput.addEventListener('input', (e) => {
-      let val = e.target.value.replace(/\D/g, '');
-      if (val.startsWith('7') || val.startsWith('8')) val = val.substring(1);
+      let raw = e.target.value.replace(/[^\d+]/g, ''); // только цифры и +
+      let digits = raw.replace(/\D/g, ''); // чистые цифры
       
-      let res = '+7 ';
-      if (val.length > 0) res += '(' + val.substring(0, 3);
-      if (val.length >= 3) res += ') ' + val.substring(3, 6);
-      if (val.length >= 6) res += '-' + val.substring(6, 8);
-      if (val.length >= 8) res += '-' + val.substring(8, 10);
+      if (digits.startsWith('7') || digits.startsWith('8')) {
+        digits = digits.substring(1);
+      }
       
-      e.target.value = val.length === 0 ? '' : res;
+      let res = '+7';
+      if (digits.length > 0) res += ' (' + digits.substring(0, 3);
+      if (digits.length >= 3) res += ') ' + digits.substring(3, 6);
+      if (digits.length >= 6) res += '-' + digits.substring(6, 8);
+      if (digits.length >= 8) res += '-' + digits.substring(8, 10);
+      
+      e.target.value = digits.length === 0 ? '' : res;
     });
 
-    // 5. Обработка формы
+    // 5. Маска ника в Telegram: автоматический @ при вводе и вставке
+    const tgInput = document.getElementById('tgInput');
+    
+    tgInput.addEventListener('focus', (e) => {
+      if (!e.target.value) {
+        e.target.value = '@';
+      }
+    });
+
+    tgInput.addEventListener('input', (e) => {
+      let val = e.target.value.trim();
+      
+      // Очистка если вставили ссылку вида t.me/username или https://t.me/username
+      val = val.replace(/^(https?:\/\/)?(www\.)?t\.me\//i, '');
+      
+      // Удаляем лишние пробелы и начальные @
+      val = val.replace(/@+/g, '');
+
+      // Фильтруем разрешенные в tg символы (латиница, цифры, подчёркивание)
+      val = val.replace(/[^a-zA-Z0-9_]/g, '');
+
+      if (val.length > 0) {
+        e.target.value = '@' + val;
+      } else {
+        e.target.value = '@';
+      }
+    });
+
+    tgInput.addEventListener('blur', (e) => {
+      if (e.target.value === '@') {
+        e.target.value = '';
+      }
+    });
+
+    // 6. Обработка формы
     const form = document.getElementById('leadForm');
     const submitBtn = document.getElementById('submitBtn');
     const successMsg = document.getElementById('formSuccess');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      
+      // Проверка заполнения телефона и телеграма
+      if (phoneInput.value.length < 18) {
+        alert('Пожалуйста, введите полный номер телефона');
+        phoneInput.focus();
+        return;
+      }
+
+      if (tgInput.value.length <= 1) {
+        alert('Пожалуйста, укажите ваш логин в Telegram');
+        tgInput.focus();
+        return;
+      }
+
       submitBtn.disabled = true;
       submitBtn.innerText = 'Отправка...';
 
