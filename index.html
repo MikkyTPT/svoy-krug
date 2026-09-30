@@ -97,6 +97,55 @@
       line-height: 1.25;
       white-space: nowrap;
     }
+
+    /* Анимация ошибки и покачивания инпута */
+    @keyframes inputShake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-4px); }
+      40%, 80% { transform: translateX(4px); }
+    }
+    .field-error {
+      border-color: #D2F802 !important;
+      box-shadow: 0 0 16px rgba(210, 248, 2, 0.25) !important;
+      animation: inputShake 0.35s ease;
+    }
+
+    /* Кастомная фирменная подсказка валидации */
+    .custom-tooltip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 12px;
+      z-index: 40;
+      background: #141416;
+      border: 1px solid rgba(210, 248, 2, 0.5);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 6px 12px;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 12px rgba(210, 248, 2, 0.15);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      pointer-events: none;
+      white-space: nowrap;
+      animation: tooltipPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .custom-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 16px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: rgba(210, 248, 2, 0.5) transparent transparent transparent;
+    }
+
+    @keyframes tooltipPop {
+      0% { opacity: 0; transform: translateY(4px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body class="bg-brand-dark text-white selection:bg-brand-lime selection:text-black antialiased">
@@ -363,7 +412,7 @@
     </div>
   </section>
 
-  <!-- Блок: Падел-теннис (С аккуратными переносами строк) -->
+  <!-- Блок: Падел-теннис -->
   <section id="padel" class="py-14 sm:py-16 bg-brand-card border-y border-brand-border px-6">
     <div class="max-w-7xl mx-auto">
       <div class="mb-10 sm:mb-12">
@@ -372,7 +421,6 @@
       </div>
 
       <div class="grid md:grid-cols-3 gap-6">
-        <!-- Карточка 1 -->
         <div class="bg-brand-dark p-8 rounded-2xl border border-brand-border">
           <h3 class="text-brand-lime font-black text-lg mb-2">Низкий порог входа</h3>
           <div class="text-neutral-400 text-sm leading-relaxed space-y-2">
@@ -381,7 +429,6 @@
           </div>
         </div>
 
-        <!-- Карточка 2 -->
         <div class="bg-brand-dark p-8 rounded-2xl border border-brand-border">
           <h3 class="text-brand-lime font-black text-lg mb-2">Формат: Только игры</h3>
           <p class="text-neutral-400 text-sm leading-relaxed">
@@ -389,7 +436,6 @@
           </p>
         </div>
 
-        <!-- Карточка 3 (Обновленный текст с переносом) -->
         <div class="bg-brand-dark p-8 rounded-2xl border border-brand-border">
           <h3 class="text-brand-lime font-black text-lg mb-2">Экипировка на месте</h3>
           <div class="text-neutral-400 text-sm leading-relaxed space-y-2">
@@ -401,7 +447,7 @@
     </div>
   </section>
 
-  <!-- Блок: Форматы участия (С динамической салатовой подсветкой пунктов ✓) -->
+  <!-- Блок: Форматы участия -->
   <section id="formats" class="py-14 sm:py-16 px-6 max-w-7xl mx-auto">
     <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-14">
       <h2 class="text-xs font-bold text-brand-lime uppercase tracking-widest mb-2">Членство в клубе</h2>
@@ -430,7 +476,7 @@
         </a>
       </div>
 
-      <!-- Карточка 2: Стать резидентом (По умолчанию активная) -->
+      <!-- Карточка 2: Стать резидентом -->
       <div data-plan="resident" class="pricing-card active-plan bg-brand-card border-2 border-brand-lime p-8 rounded-2xl flex flex-col justify-between transition-all duration-300 relative shadow-xl shadow-brand-lime/10 cursor-pointer">
         <div class="plan-badge absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-lime text-black text-xs font-black uppercase px-4 py-1 rounded-full opacity-100 transition-opacity duration-300">
           Хит сезона
@@ -475,7 +521,7 @@
     </div>
   </section>
 
-  <!-- Форма заявки -->
+  <!-- Форма заявки с кастомной валидацией в неоновом стиле -->
   <section id="join" class="py-20 bg-brand-card border-t border-brand-border px-6">
     <div class="max-w-2xl mx-auto">
       <div class="text-center mb-10">
@@ -491,48 +537,53 @@
         </p>
       </div>
 
-      <form id="leadForm" class="space-y-4 bg-brand-dark p-8 rounded-2xl border border-brand-border">
-        <!-- Поле Имя с фильтром только букв -->
-        <div>
+      <!-- novalidate отключает стандартные белые подсказки браузера -->
+      <form id="leadForm" novalidate class="space-y-4 bg-brand-dark p-8 rounded-2xl border border-brand-border">
+        
+        <!-- Имя -->
+        <div class="relative">
           <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
             Ваше имя <span class="text-brand-lime">*</span>
           </label>
-          <input type="text" name="name" id="nameInput" required placeholder="Имя" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-colors">
+          <input type="text" name="name" id="nameInput" placeholder="Имя" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-all">
         </div>
 
         <div class="grid sm:grid-cols-2 gap-4">
-          <!-- Телефон: только цифры и + -->
-          <div>
+          <!-- Телефон -->
+          <div class="relative">
             <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
               Телефон <span class="text-brand-lime">*</span>
             </label>
-            <input type="tel" name="phone" id="phoneInput" required placeholder="+7 (___) ___-__-__" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-colors">
+            <input type="tel" name="phone" id="phoneInput" placeholder="+7 (___) ___-__-__" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-all">
           </div>
-          <!-- Telegram: автоподстановка @ -->
-          <div>
+
+          <!-- Telegram -->
+          <div class="relative">
             <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
               Ваш юзернейм в Telegram <span class="text-brand-lime">*</span>
             </label>
-            <input type="text" name="telegram" id="tgInput" required placeholder="@username" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-colors">
+            <input type="text" name="telegram" id="tgInput" placeholder="@username" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-all">
           </div>
         </div>
 
-        <div>
+        <!-- Выбор тарифа -->
+        <div class="relative">
           <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
             Что интересует в первую очередь? <span class="text-brand-lime">*</span>
           </label>
-          <select name="interest" id="interestSelect" required class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-colors">
+          <select name="interest" id="interestSelect" class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-all">
             <option value="guest">Гостевой тестовый визит</option>
             <option value="all">Стать резидентом (Бег и Падел-теннис)</option>
             <option value="run">Индивидуальный пакет (Бег / Падел по запросу)</option>
           </select>
         </div>
 
-        <div>
+        <!-- Сфера бизнеса -->
+        <div class="relative">
           <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
             Сфера деятельности / Бизнес <span class="text-brand-lime">*</span>
           </label>
-          <input type="text" name="business" required placeholder="IT, производство, сфера услуг, консалтинг..." class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-colors">
+          <input type="text" name="business" id="businessInput" placeholder="IT, производство, сфера услуг, консалтинг..." class="w-full bg-brand-card border border-brand-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-lime transition-all">
         </div>
 
         <button type="submit" id="submitBtn" class="w-full bg-brand-lime text-black font-extrabold py-4 rounded-xl text-sm uppercase tracking-wider hover:bg-white transition-all mt-4">
@@ -543,7 +594,7 @@
           Нажимая кнопку, вы соглашаетесь на обработку персональных данных. Никакого спама.
         </p>
 
-        <!-- Сообщение об успешной отправке -->
+        <!-- Успешная отправка -->
         <div id="formSuccess" class="hidden p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-center text-sm">
           Спасибо! Ваша заявка принята. Координатор клуба свяжется с вами в ближайшее время.
         </div>
@@ -629,7 +680,7 @@
       syncWidth();
     }, 2400);
 
-    // 3. Тарифы с динамической подсветкой рамок и текста "✓"
+    // 3. Тарифы
     const pricingGrid = document.getElementById('pricingGrid');
     const cards = pricingGrid.querySelectorAll('.pricing-card');
     const defaultCard = pricingGrid.querySelector('[data-plan="resident"]');
@@ -654,7 +705,6 @@
             badge.classList.add('opacity-100');
           }
 
-          // Подсветка текста и ✓ в салатовый тон
           checkIcons.forEach(icon => {
             icon.classList.remove('text-neutral-500');
             icon.classList.add('text-brand-lime');
@@ -676,7 +726,6 @@
             badge.classList.add('opacity-0');
           }
 
-          // Возврат к стандартному виду
           checkIcons.forEach(icon => {
             icon.classList.remove('text-brand-lime');
             icon.classList.add('text-neutral-500');
@@ -709,7 +758,7 @@
       e.target.value = e.target.value.replace(/[^a-zA-Zа-яА-ЯёЁ\s\-]/g, '');
     });
 
-    // 5. Маска телефона: строго цифры и знак плюс (буквы отсекаются)
+    // 5. Маска телефона: строго цифры и знак плюс
     const phoneInput = document.getElementById('phoneInput');
     phoneInput.addEventListener('input', (e) => {
       let raw = e.target.value.replace(/[^\d+]/g, '');
@@ -730,7 +779,8 @@
 
     // 6. Маска ника в Telegram: автоматический @ при вводе и вставке
     const tgInput = document.getElementById('tgInput');
-    
+    const businessInput = document.getElementById('businessInput');
+
     tgInput.addEventListener('focus', (e) => {
       if (!e.target.value) {
         e.target.value = '@';
@@ -756,23 +806,62 @@
       }
     });
 
-    // 7. Обработка формы
+    // 7. Кастомная система подсказок валидации в стиле сайта
+    function clearTooltips() {
+      document.querySelectorAll('.custom-tooltip').forEach(tip => tip.remove());
+      document.querySelectorAll('.field-error').forEach(input => input.classList.remove('field-error'));
+    }
+
+    function showTooltip(input, message) {
+      clearTooltips();
+      input.classList.add('field-error');
+      input.focus();
+
+      const tooltip = document.createElement('div');
+      tooltip.className = 'custom-tooltip';
+      tooltip.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-brand-lime"></span><span>${message}</span>`;
+      
+      input.parentElement.appendChild(tooltip);
+
+      const removeHandler = () => {
+        tooltip.remove();
+        input.classList.remove('field-error');
+        input.removeEventListener('input', removeHandler);
+      };
+      input.addEventListener('input', removeHandler);
+    }
+
+    // 8. Обработка отправки формы
     const form = document.getElementById('leadForm');
     const submitBtn = document.getElementById('submitBtn');
     const successMsg = document.getElementById('formSuccess');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
-      if (phoneInput.value.length < 18) {
-        alert('Пожалуйста, введите полный номер телефона');
-        phoneInput.focus();
+      clearTooltips();
+
+      // Проверка имени
+      if (!nameInput.value.trim()) {
+        showTooltip(nameInput, 'Пожалуйста, укажите ваше имя');
         return;
       }
 
-      if (tgInput.value.length <= 1) {
-        alert('Пожалуйста, укажите ваш логин в Telegram');
-        tgInput.focus();
+      // Проверка телефона
+      if (!phoneInput.value.trim() || phoneInput.value.length < 18) {
+        showTooltip(phoneInput, 'Введите полный номер телефона (+7 ...)');
+        return;
+      }
+
+      // Проверка Telegram
+      const cleanTg = tgInput.value.replace('@', '').trim();
+      if (!cleanTg) {
+        showTooltip(tgInput, 'Укажите ваш ник в Telegram (@username)');
+        return;
+      }
+
+      // Проверка сферы деятельности
+      if (!businessInput.value.trim()) {
+        showTooltip(businessInput, 'Укажите сферу деятельности или бизнес');
         return;
       }
 
