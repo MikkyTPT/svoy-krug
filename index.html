@@ -46,15 +46,17 @@
       animation-play-state: paused;
     }
 
-    /* Надежный ротатор на базе ленты: слова никогда не улетают выше базовой линии */
+    /* Ротатор с мягким градиентным отсечением (никаких обрезков хвостов букв Й, Щ, Д) */
     .rotator-track {
       display: inline-flex;
-      flex-direction: column;
-      height: 1.15em;
-      line-height: 1.15;
+      position: relative;
       overflow: hidden;
-      vertical-align: baseline;
-      transition: width 0.3s ease;
+      height: 1.25em;
+      line-height: 1.25;
+      vertical-align: -0.18em;
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
     }
 
     .rotator-slider {
@@ -64,9 +66,10 @@
     }
 
     .rotator-slider > span {
-      display: block;
-      height: 1.15em;
-      line-height: 1.15;
+      display: flex;
+      align-items: center;
+      height: 1.25em;
+      line-height: 1.25;
       white-space: nowrap;
     }
   </style>
@@ -121,12 +124,12 @@
             <span>●</span> Первое спортивное бизнес сообщество
           </div>
 
-          <!-- Заголовок: единая базовая линия шрифта -->
-          <h1 class="text-3xl sm:text-5xl lg:text-[3.2rem] font-black uppercase tracking-tight flex flex-col gap-3.5 mb-8">
-            <span class="block">МЫ ОБЪЕДИНЯЕМ ФАУНДЕРОВ</span>
-            <span class="block">И РУКОВОДИТЕЛЕЙ</span>
-            <div class="flex items-baseline gap-3 flex-wrap sm:flex-nowrap">
-              <span>ИЗ</span>
+          <!-- Заголовок: строгая сетка с одинаковым межстрочным расстоянием -->
+          <h1 class="text-3xl sm:text-5xl lg:text-[3.15rem] font-black uppercase tracking-tight grid gap-y-3 sm:gap-y-4 mb-8 leading-none">
+            <span class="block leading-none">МЫ ОБЪЕДИНЯЕМ ФАУНДЕРОВ</span>
+            <span class="block leading-none">И РУКОВОДИТЕЛЕЙ</span>
+            <div class="flex items-center gap-3 flex-wrap sm:flex-nowrap leading-none">
+              <span class="leading-none">ИЗ</span>
               <div class="rotator-track text-brand-lime" id="rotatorTrack">
                 <div class="rotator-slider" id="rotatorSlider">
                   <span>IT & РАЗРАБОТКИ</span>
@@ -141,7 +144,7 @@
             </div>
           </h1>
 
-          <!-- Текст без висячего союза "а" -->
+          <!-- Текст без висячих союзов -->
           <div class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed space-y-4 mb-8">
             <p>
               Регулярные беговые тренировки с профессиональным тренерским составом.
@@ -180,7 +183,7 @@
           <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-black/30 pointer-events-none"></div>
         </div>
 
-        <!-- Круглая кнопка строго по центру -->
+        <!-- Круглая кнопка -->
         <a href="#join" 
            class="group absolute -bottom-6 -right-3 sm:-bottom-8 sm:-right-6 w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-brand-lime text-black p-4 flex items-center justify-center text-center shadow-[0_10px_45px_rgba(210,248,2,0.4)] transform hover:scale-105 transition-all duration-300 cursor-pointer">
           <span class="text-xs sm:text-sm font-black uppercase tracking-tight leading-snug">
@@ -192,7 +195,7 @@
 
     </div>
 
-    <!-- Бегущая строка без звёздочек -->
+    <!-- Бегущая строка -->
     <div class="mt-16 py-4 border-y border-brand-border bg-brand-card/50 overflow-hidden relative rounded-xl">
       <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-brand-dark to-transparent z-10 pointer-events-none"></div>
       <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-brand-dark to-transparent z-10 pointer-events-none"></div>
@@ -217,38 +220,38 @@
       </div>
     </div>
 
-    <!-- 4 блока преимуществ: без троеточий, строго в одну строку на любом экране -->
+    <!-- 4 блока преимуществ: малый регистр, не вылезают за границы -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 border-t border-brand-border pt-10 mt-6">
       
       <!-- Блок 1 -->
-      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-5 flex flex-col justify-center">
-        <p class="text-2xl sm:text-3xl font-black text-brand-lime uppercase tracking-tight leading-none mb-3">0+</p>
-        <p class="text-[11px] sm:text-xs xl:text-sm font-bold text-neutral-400 uppercase tracking-tight sm:tracking-normal whitespace-nowrap">
-          ЛЮБОЙ УРОВЕНЬ ПОДГОТОВКИ
+      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-5 flex flex-col justify-center overflow-hidden">
+        <p class="text-2xl sm:text-3xl font-black text-brand-lime uppercase tracking-tight leading-none mb-2">0+</p>
+        <p class="text-xs sm:text-[13px] text-neutral-400 font-medium leading-snug break-words">
+          Любой уровень подготовки
         </p>
       </div>
 
       <!-- Блок 2 -->
-      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-5 flex flex-col justify-center">
-        <p class="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight leading-none mb-3">БЕГ</p>
-        <p class="text-[11px] sm:text-xs xl:text-sm font-bold text-neutral-400 uppercase tracking-tight sm:tracking-normal whitespace-nowrap">
-          ЗИМОЙ В ТЕПЛЕ, ЛЕТОМ НА ВОЗДУХЕ
+      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-5 flex flex-col justify-center overflow-hidden">
+        <p class="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight leading-none mb-2">Бег</p>
+        <p class="text-xs sm:text-[13px] text-neutral-400 font-medium leading-snug break-words">
+          Зимой в тепле, летом на воздухе
         </p>
       </div>
 
       <!-- Блок 3 -->
-      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-5 flex flex-col justify-center">
-        <p class="text-2xl sm:text-3xl font-black text-brand-lime uppercase tracking-tight leading-none mb-3">PADEL</p>
-        <p class="text-[11px] sm:text-xs xl:text-sm font-bold text-neutral-400 uppercase tracking-tight sm:tracking-normal whitespace-nowrap">
-          ОТ НОВИЧКА ДО РЕЙТИНГОВЫХ ИГР
+      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-5 flex flex-col justify-center overflow-hidden">
+        <p class="text-2xl sm:text-3xl font-black text-brand-lime uppercase tracking-tight leading-none mb-2">Padel</p>
+        <p class="text-xs sm:text-[13px] text-neutral-400 font-medium leading-snug break-words">
+          От новичка до рейтинговых игр
         </p>
       </div>
 
       <!-- Блок 4 -->
-      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-5 flex flex-col justify-center">
-        <p class="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight leading-none mb-3">ВСТРЕЧИ</p>
-        <p class="text-[11px] sm:text-xs xl:text-sm font-bold text-neutral-400 uppercase tracking-tight sm:tracking-normal whitespace-nowrap">
-          ЗАВТРАКИ И ОБЩЕНИЕ БЕЗ РЕГАЛИЙ
+      <div class="bg-brand-card/60 border border-brand-border/60 rounded-2xl p-5 flex flex-col justify-center overflow-hidden">
+        <p class="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight leading-none mb-2">Встречи</p>
+        <p class="text-xs sm:text-[13px] text-neutral-400 font-medium leading-snug break-words">
+          Завтраки и общение без регалий
         </p>
       </div>
 
@@ -577,7 +580,7 @@
 
     setInterval(() => {
       currentIndex = (currentIndex + 1) % items.length;
-      slider.style.transform = `translateY(-${currentIndex * 1.15}em)`;
+      slider.style.transform = `translateY(-${currentIndex * 1.25}em)`;
       syncWidth();
     }, 2400);
 
