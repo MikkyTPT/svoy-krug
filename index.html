@@ -46,6 +46,31 @@
       animation-play-state: paused;
     }
 
+    /* Мягкая пульсация в ритме сердца (~2.6 сек, двойной импульс тук-тук) */
+    @keyframes heartbeatRing {
+      0% { transform: scale(1); opacity: 0.8; }
+      14% { transform: scale(1.6); opacity: 0.4; }
+      28% { transform: scale(1.15); opacity: 0.7; }
+      42% { transform: scale(2.1); opacity: 0; }
+      100% { transform: scale(1); opacity: 0; }
+    }
+
+    @keyframes heartbeatDot {
+      0%, 100% { transform: scale(1); }
+      14% { transform: scale(1.2); }
+      28% { transform: scale(1.05); }
+      42% { transform: scale(1.3); }
+      70% { transform: scale(1); }
+    }
+
+    .heartbeat-ring {
+      animation: heartbeatRing 2.6s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+
+    .heartbeat-dot {
+      animation: heartbeatDot 2.6s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+
     /* Ротатор с мягким градиентным отсечением */
     .rotator-track {
       display: inline-flex;
@@ -76,15 +101,15 @@
 </head>
 <body class="bg-brand-dark text-white selection:bg-brand-lime selection:text-black antialiased">
 
-  <!-- Фиксированный хедер с пульсирующим кружком -->
+  <!-- Фиксированный хедер с пульсацией ритма сердца -->
   <header class="fixed top-0 left-0 right-0 z-50 h-20 bg-brand-dark/95 backdrop-blur-md border-b border-brand-border/80 flex items-center">
     <div class="max-w-7xl mx-auto w-full px-6 flex items-center justify-between">
       
-      <!-- Логотип с пульсирующим кружком -->
+      <!-- Логотип с мягким сердечным пульсом -->
       <a href="#" class="text-2xl font-black tracking-tighter uppercase flex items-center gap-3">
         <span class="relative flex h-3 w-3 items-center justify-center">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-lime opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-lime shadow-[0_0_10px_#D2F802]"></span>
+          <span class="heartbeat-ring absolute inline-flex h-full w-full rounded-full bg-brand-lime"></span>
+          <span class="heartbeat-dot relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-lime shadow-[0_0_10px_#D2F802]"></span>
         </span>
         СВОЙ КРУГ
       </a>
@@ -398,7 +423,7 @@
         </a>
       </div>
 
-      <!-- Карточка 2: Стать резидентом (Бывший Full Resident) -->
+      <!-- Карточка 2: Стать резидентом -->
       <div data-plan="resident" class="pricing-card active-plan bg-brand-card border-2 border-brand-lime p-8 rounded-2xl flex flex-col justify-between transition-all duration-300 relative shadow-xl shadow-brand-lime/10 cursor-pointer">
         <div class="plan-badge absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-lime text-black text-xs font-black uppercase px-4 py-1 rounded-full opacity-100 transition-opacity duration-300">
           Хит сезона
@@ -419,7 +444,7 @@
         </a>
       </div>
 
-      <!-- Карточка 3: Индивидуальный пакет (Бывший Solo) -->
+      <!-- Карточка 3: Индивидуальный пакет -->
       <div data-plan="solo" class="pricing-card bg-brand-card border-2 border-brand-border p-8 rounded-2xl flex flex-col justify-between transition-all duration-300 relative cursor-pointer">
         <div class="plan-badge absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-lime text-black text-xs font-black uppercase px-4 py-1 rounded-full opacity-0 pointer-events-none transition-opacity duration-300">
           Фокус
@@ -443,19 +468,22 @@
     </div>
   </section>
 
-  <!-- Форма заявки с пульсирующим индикатором -->
+  <!-- Форма заявки: зеленый кружок перед «СВОЙ КРУГ» -->
   <section id="join" class="py-20 bg-brand-card border-t border-brand-border px-6">
     <div class="max-w-2xl mx-auto">
       <div class="text-center mb-10">
         <span class="text-xs font-bold text-brand-lime uppercase tracking-widest">Анкета кандидата</span>
         
-        <!-- Заголовок формы с пульсирующим кружком -->
-        <h2 class="text-2xl sm:text-4xl font-black uppercase tracking-tight mt-2 flex items-center justify-center gap-3">
-          <span class="relative flex h-3.5 w-3.5 items-center justify-center">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-lime opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-lime shadow-[0_0_10px_#D2F802]"></span>
+        <!-- Заголовок формы с органично встроенным индикатором перед кавычками -->
+        <h2 class="text-2xl sm:text-4xl font-black uppercase tracking-tight mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+          <span>ПОДАТЬ ЗАЯВКУ В</span>
+          <span class="inline-flex items-center gap-2.5">
+            <span class="relative flex h-3 w-3 items-center justify-center -translate-y-0.5">
+              <span class="heartbeat-ring absolute inline-flex h-full w-full rounded-full bg-brand-lime"></span>
+              <span class="heartbeat-dot relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-lime shadow-[0_0_10px_#D2F802]"></span>
+            </span>
+            <span>«СВОЙ КРУГ»</span>
           </span>
-          Подать заявку в «Свой круг»
         </h2>
         
         <p class="text-neutral-400 text-sm mt-3">
@@ -517,8 +545,8 @@
       <div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
         <div class="flex items-center gap-3">
           <span class="relative flex h-2.5 w-2.5 items-center justify-center">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-lime opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-lime"></span>
+            <span class="heartbeat-ring absolute inline-flex h-full w-full rounded-full bg-brand-lime"></span>
+            <span class="heartbeat-dot relative inline-flex rounded-full h-2 w-2 bg-brand-lime"></span>
           </span>
           <span class="font-bold tracking-tight text-white uppercase text-sm">СВОЙ КРУГ</span>
         </div>
